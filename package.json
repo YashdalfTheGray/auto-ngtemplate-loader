@@ -6,6 +6,9 @@
   "repository": "https://github.com/yashdalfthegray/auto-ngtemplate",
   "author": "YashdalfTheGray <yash.kulshrestha@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "tape **/*.spec.js | tap-min"
+  },
   "dependencies": {
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4"
