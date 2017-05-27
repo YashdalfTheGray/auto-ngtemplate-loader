@@ -1,3 +1,5 @@
+# ignore all the webpack builds
+examples/*/build/*
 
 # Created by https://www.gitignore.io/api/osx,node,windows
 
