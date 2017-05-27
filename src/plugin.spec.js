@@ -1,6 +1,5 @@
-const test = require('tape');
+const test = require('ava');
 
 test('make sure this works', (t) => {
-    t.equal(true, true);
-    t.end();
+    t.is(true, true);
 });
