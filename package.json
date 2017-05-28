@@ -9,7 +9,8 @@
   "scripts": {
     "test": "ava src/**/*.spec.js",
     "clean": "git clean -xfd",
-    "one-directive": "webpack --config examples/01-one-directive/webpack.config.js"
+    "one-directive": "webpack --config examples/01-one-directive/webpack.config.js",
+    "many-directives": "webpack --config examples/02-many-directives/webpack.config.js"
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
