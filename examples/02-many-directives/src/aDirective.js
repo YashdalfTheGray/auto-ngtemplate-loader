@@ -1,8 +1,8 @@
-/* global MyCtrl:false */
+/* global ACtrl:false */
 
 export const aControllerName = 'aController';
 export function AController(myService) {
-    MyCtrl.message = myService.getText();
+    ACtrl.message = myService.getText();
 }
 AController.$inject = ['myService'];
 
@@ -10,12 +10,12 @@ export const aDirectiveName = 'aDirective';
 export function aDirective() {
     return {
         restrict: 'E',
-        controller: 'MyController',
-        controllerAs: 'MyCtrl',
+        controller: 'AController',
+        controllerAs: 'ACtrl',
         scope: {
             foo: '='
         },
         bindToController: true,
-        templateUrl: 'oneDirective/app.tpl.html'
+        templateUrl: '02-many-directives/app.tpl.html'
     };
 }
