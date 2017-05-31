@@ -9,6 +9,7 @@
         "indent": ["error", 4],
         "linebreak-style": ["off"],
         "max-len": ["warn", 120],
-        "object-shorthand": ["error", "consistent-as-needed"]
+        "object-shorthand": ["error", "consistent-as-needed"],
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }]
     }
 }
