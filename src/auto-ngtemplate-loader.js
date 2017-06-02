@@ -1,4 +1,4 @@
-const { findTemplateUrl } = require('./util');
+const { replaceTemplateUrl } = require('./util');
 
 module.exports = function autoNgTemplateLoader(source, map) {
     if (/^const template/.test(source)) {
@@ -6,8 +6,8 @@ module.exports = function autoNgTemplateLoader(source, map) {
         return;
     }
 
-    const templateUrl = findTemplateUrl(source.split('\n'));
+    const newSource = replaceTemplateUrl(source.split('\n')).join('\n');
 
-    console.log(source, map, templateUrl); // eslint-disable-line no-console
-    this.callback(null, source, map);
+    console.log(source, map, newSource); // eslint-disable-line no-console
+    this.callback(null, newSource, map);
 };
