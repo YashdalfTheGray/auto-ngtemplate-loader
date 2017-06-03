@@ -1,4 +1,6 @@
-# auto-ngtemplate
+[![Build Status](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader)
+
+# auto-ngtemplate-loader
 Auto require AngularJS 1.x templates in Webpack style
 
 ## Usage
