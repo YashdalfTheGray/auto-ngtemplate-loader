@@ -1,4 +1,4 @@
-const { join } = require('path');
+const { join, resolve } = require('path');
 
 module.exports = {
     devtool: 'source-map',
@@ -15,7 +15,17 @@ module.exports = {
             {
                 test: /\.html$/,
                 exclude: /node_modules/,
-                use: ['ng-template-loader', 'html-loader']
+                use: [
+                    {
+                        loader: 'ngtemplate-loader',
+                        options: {
+                            relativeTo: resolve('./examples')
+                        }
+                    },
+                    {
+                        loader: 'html-loader'
+                    }
+                ]
             }
         ]
     },
