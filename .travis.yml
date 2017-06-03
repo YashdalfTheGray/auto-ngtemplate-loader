@@ -1,7 +1,7 @@
 language: node
 
 node_js:
-    - "node",
+    - "node"
     - "7"
     - "6.10"
     - "6"
