@@ -23,11 +23,11 @@ function replaceTemplateUrl(lines) {
         updatedLines[x.lineNumber] = x.lineReplacement;
     });
 
-    return [].concat(
-        templateRequires.map((x, i) => `const template${i + 1} = require('${x.templateUrl}');`),
+    return [
+        ...templateRequires.map((x, i) => `const template${i + 1} = require('${x.templateUrl}');`),
         ``,
-        updatedLines
-    );
+        ...updatedLines
+    ];
 }
 
 module.exports = {
