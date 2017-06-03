@@ -1,69 +1,57 @@
-const testService = [
-    `angular.module('test')`,
-    `.service('myService', () => ({`,
-    `\tgetDescription: () => 'test description'`,
-    `}));`
-];
+const testService = `angular.module('test')
+.service('myService', () => ({
+    getDescription: () => 'test description'
+}));`;
 
-const testDirective1 = [
-    `angular.module('test')`,
-    `.directive('myDirective', () => ({`,
-    `\trestrict: 'AE',`,
-    `\tcontroller: 'MyController',`,
-    `\tcontrollerAs: 'MyCtrl',`,
-    `\tbindToController: true,`,
-    `\ttemplateUrl: './myTemplate.html',`,
-    `\tscope: {`,
-    `\t\tvalue: '='`,
-    `\t}`,
-    `}));`
-];
+const testDirective1 = `angular.module('test')
+.directive('myDirective', () => ({
+    restrict: 'AE',
+    controller: 'MyController',
+    controllerAs: 'MyCtrl',
+    templateUrl: './myTemplate.html',
+    scope: {
+        value: '='
+    }
+}));`;
 
-const testDirective1Replaced = [
-    `const template = require('ngtemplate-loader!html-loader!./myTemplate.html');`,
-    ``,
-    `angular.module('test')`,
-    `.directive('myDirective', () => ({`,
-    `\trestrict: 'AE',`,
-    `\tcontroller: 'MyController',`,
-    `\tcontrollerAs: 'MyCtrl',`,
-    `\tbindToController: true,`,
-    `\ttemplateUrl: template,`,
-    `\tscope: {`,
-    `\t\tvalue: '='`,
-    `\t}`,
-    `}));`
-];
+const testDirective1Replaced = `const template = require('./myTemplate.html');
 
-const testDirective2 = [
-    `angular.module('test')`,
-    `.directive('myDirective', () => ({`,
-    `\trestrict: 'AE',`,
-    `\tcontroller: 'MyController',`,
-    `\tcontrollerAs: 'MyCtrl',`,
-    `\tbindToController: true,`,
-    `\tscope: {`,
-    `\t\tvalue: '='`,
-    `\t},`,
-    `\ttemplateUrl:'./anotherTemplate.html'`,
-    `}));`
-];
+angular.module('test')
+.directive('myDirective', () => ({
+    restrict: 'AE',
+    controller: 'MyController',
+    controllerAs: 'MyCtrl',
+    templateUrl: template,
+    scope: {
+        value: '='
+    }
+}));`;
 
-const testDirective2Replaced = [
-    `const template = require('ngtemplate-loader!html-loader!./anotherTemplate.html');`,
-    ``,
-    `angular.module('test')`,
-    `.directive('myDirective', () => ({`,
-    `\trestrict: 'AE',`,
-    `\tcontroller: 'MyController',`,
-    `\tcontrollerAs: 'MyCtrl',`,
-    `\tbindToController: true,`,
-    `\tscope: {`,
-    `\t\tvalue: '='`,
-    `\t},`,
-    `\ttemplateUrl:template`,
-    `}));`
-];
+const testDirective2 = `angular.module('test')
+.directive('myDirective', () => ({
+    restrict: 'AE',
+    controller: 'MyController',
+    controllerAs: 'MyCtrl',
+    bindToController: true,
+    scope: {
+        value: '='
+    },
+    templateUrl:'./anotherTemplate.html'
+}));`;
+
+const testDirective2Replaced = `const template = require('./anotherTemplate.html');
+
+angular.module('test')
+.directive('myDirective', () => ({
+    restrict: 'AE',
+    controller: 'MyController',
+    controllerAs: 'MyCtrl',
+    bindToController: true,
+    scope: {
+        value: '='
+    },
+    templateUrl:template
+}));`;
 
 module.exports = {
     testService,
