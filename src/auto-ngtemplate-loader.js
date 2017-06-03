@@ -8,6 +8,5 @@ module.exports = function autoNgTemplateLoader(source, map) {
 
     const newSource = replaceTemplateUrl(source.split('\n')).join('\n');
 
-    console.log(source, map, newSource); // eslint-disable-line no-console
     this.callback(null, newSource, map);
 };
