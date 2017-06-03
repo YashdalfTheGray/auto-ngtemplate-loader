@@ -8,9 +8,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
-                use: ['babel-loader', 'auto-ngtemplate-loader'],
-                exclude: /node_modules/
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader', 'auto-ngtemplate-loader']
+            },
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                use: ['ng-template-loader', 'html-loader']
             }
         ]
     },
