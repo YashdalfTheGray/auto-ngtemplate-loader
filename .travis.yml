@@ -6,6 +6,9 @@ node_js:
     - "6.10"
     - "6"
 
+install:
+    - npm install
+
 before_script:
     - npm install html-loader ngtemplate-loader
 
