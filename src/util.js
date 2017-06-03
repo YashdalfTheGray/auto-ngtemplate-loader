@@ -1,7 +1,11 @@
 function replaceTemplateUrl(lines) {
     const regEx = /(^\s*templateUrl:\s*)['"](.*)['"](,*)$/;
-
     const lineNumber = lines.reduce((result, line, i) => (/templateUrl/.test(line) ? i : result), -1);
+
+    if (lineNumber === -1) {
+        return lines;
+    }
+
     const [, , templateUrl] = regEx.exec(lines[lineNumber]);
 
     return [
