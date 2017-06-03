@@ -9,6 +9,7 @@
   "scripts": {
     "test": "ava src/**/*.spec.js",
     "clean": "git clean -xfd",
+    "linter": "eslint src/**/*.js examples/**/*.js index.js webpack.*.js",
     "one-directive": "webpack --config examples/01-one-directive/webpack.config.js",
     "many-directives": "webpack --config examples/02-many-directives/webpack.config.js"
   },
