@@ -1,20 +1,33 @@
 function replaceTemplateUrl(lines) {
     const regEx = /(^\s*templateUrl:\s*)['"](.*)['"](,*)$/;
-    const lineNumber = lines.reduce((result, line, i) => (/templateUrl/.test(line) ? i : result), -1);
+    const lineNumbers = lines.reduce((result, line, i) => (/templateUrl/.test(line) ? result.concat(i) : result), []);
 
-    if (lineNumber === -1) {
+    if (!lineNumbers.length) {
         return lines;
     }
 
-    const [, , templateUrl] = regEx.exec(lines[lineNumber]);
+    const templateRequires = lineNumbers.map((lineNumber, i) => {
+        const [, , templateUrl] = regEx.exec(lines[lineNumber]);
+        const lineReplacement = lines[lineNumber].replace(regEx, `$1template${i + 1}$3`);
 
-    return [
-        `const template = require('${templateUrl}');`,
+        return {
+            templateUrl,
+            lineNumber,
+            lineReplacement
+        };
+    });
+
+    const updatedLines = lines;
+
+    templateRequires.forEach((x) => {
+        updatedLines[x.lineNumber] = x.lineReplacement;
+    });
+
+    return [].concat(
+        templateRequires.map((x, i) => `const template${i + 1} = require('${x.templateUrl}');`),
         ``,
-        ...lines.slice(0, lineNumber),
-        lines[lineNumber].replace(regEx, '$1template$3'),
-        ...lines.slice(lineNumber + 1)
-    ];
+        updatedLines
+    );
 }
 
 module.exports = {
