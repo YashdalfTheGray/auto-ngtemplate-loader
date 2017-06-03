@@ -1,0 +1,20 @@
+language: node
+
+node_js:
+    - "node",
+    - "7"
+    - "6.10"
+    - "6"
+
+before_script:
+    - npm install html-loader ngtemplate-loader
+
+script:
+    - npm test
+    - npm run linter
+    - npm run one-directive
+    - npm run many-directives
+
+cache:
+    directories:
+        - "node_modules"
