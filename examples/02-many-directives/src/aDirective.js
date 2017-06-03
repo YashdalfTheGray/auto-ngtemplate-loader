@@ -16,6 +16,6 @@ export function aDirective() {
             foo: '='
         },
         bindToController: true,
-        templateUrl: './app.tpl.html'
+        templateUrl: './aDirective.tpl.html'
     };
 }
