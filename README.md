@@ -23,7 +23,7 @@ module.exports = {
 
 **Note** - It is recommended that this loader be run before any transpilation happens so it can operate on unchanged source code.
 
-The next step is to add `ngtemplate-loader` and a loader that you want to handle HTML code with. The most common one is `html-loader`. This will run every time Webpack encounters `require('something.html')`.
+The next step is to add `ngtemplate-loader` and a loader that you want to handle your template code with. The most common one is `html-loader`. This will run every time Webpack encounters `require('something.html')`.
 
 ```js
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
 }
 ```
 
-It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that the templates aren't put into the Angular template cache with absolute paths which contain platform specific or user specific information. This will affect the portability of the bundled code. 
+It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that the templates aren't put into the Angular template cache with absolute paths which contain platform specific or user specific information. This will affect the portability of the bundled code.
 
 ## Development
 
@@ -61,7 +61,7 @@ If you're using a npm v5, you will need to include the `--no-save` flag so that 
 
 ### Running
 
-There are two example projects includes. One that has one directive and another that has more. You can run `npm run one-directive` or `npm run many-directives` to see the loader in action. Once successful, examinging the `build/bundle.js` file will show the results.
+There are two example projects includes. One that has one directive and another that has more. You can run `npm run one-directive` or `npm run many-directives` to see the loader in action. Once successful, examining the `build/bundle.js` file will show the results.
 
 ### Testing
 
@@ -71,7 +71,7 @@ The tests for this package are written in with ava. They can be run by running `
 
 This project uses ESLint. All the requisite files can be linted using `npm run linter`. The rules for this project are located in `eslintrc.json`.
 
-### Misc
+### Miscellaneous
 
 This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v6.10.3 which is the current LTS release. However, any Node.js version greater than v6.10.3 should also work.
 
