@@ -61,7 +61,7 @@ If you're using a npm v5, you will need to include the `--no-save` flag so that 
 
 ### Running
 
-There are two example projects includes. One that has one directive and another that has more. You can run `npm run one-directive` or `npm run many-directives` to see the loader in action. Once successful, examining the `build/bundle.js` file will show the results.
+There are two example projects includes. One that has one directive and another that has more. You can run `npm run one-directive`, `npm run many-directives` or `npm run multiple-directives` to see the loader in action. Once successful, examining the `build/bundle.js` file will show the results.
 
 ### Testing
 
