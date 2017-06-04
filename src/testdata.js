@@ -14,14 +14,14 @@ const testDirective1 = `angular.module('test')
     }
 }));`;
 
-const testDirective1Replaced = `const template1 = require('./myTemplate.html');
+const testDirective1Replaced = `const autoNgTemplateLoaderTemplate1 = require('./myTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
     restrict: 'AE',
     controller: 'MyController',
     controllerAs: 'MyCtrl',
-    templateUrl: template1,
+    templateUrl: autoNgTemplateLoaderTemplate1,
     scope: {
         value: '='
     }
@@ -39,7 +39,7 @@ const testDirective2 = `angular.module('test')
     templateUrl:'./anotherTemplate.html'
 }));`;
 
-const testDirective2Replaced = `const template1 = require('./anotherTemplate.html');
+const testDirective2Replaced = `const autoNgTemplateLoaderTemplate1 = require('./anotherTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -50,7 +50,7 @@ angular.module('test')
     scope: {
         value: '='
     },
-    templateUrl:template1
+    templateUrl:autoNgTemplateLoaderTemplate1
 }));`;
 
 const multipleDirectives = `angular.module('test')
@@ -63,17 +63,17 @@ angular.module('test2')
     templateUrl: './helloWorldAgain.html'
 }));`;
 
-const multipleDirectivesReplaced = `const template1 = require('./helloWorld.html');
-const template2 = require('./helloWorldAgain.html');
+const multipleDirectivesReplaced = `const autoNgTemplateLoaderTemplate1 = require('./helloWorld.html');
+const autoNgTemplateLoaderTemplate2 = require('./helloWorldAgain.html');
 
 angular.module('test')
 .directive('whatever', () => ({
-    templateUrl: template1
+    templateUrl: autoNgTemplateLoaderTemplate1
 }));
 
 angular.module('test2')
 .directive('whatever2', () => ({
-    templateUrl: template2
+    templateUrl: autoNgTemplateLoaderTemplate2
 }));`;
 
 module.exports = {
