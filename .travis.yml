@@ -17,6 +17,7 @@ script:
     - npm run linter
     - npm run one-directive
     - npm run many-directives
+    - npm run multiple-directives
 
 cache:
     directories:
