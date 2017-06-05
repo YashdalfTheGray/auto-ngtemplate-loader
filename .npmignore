@@ -1,0 +1,8 @@
+examples/**
+src/**/*.spec.js
+src/testdata.js
+.babelrc
+.eslintrc.json
+.nvmrc
+.travis.yml
+webpack.base.config.js
