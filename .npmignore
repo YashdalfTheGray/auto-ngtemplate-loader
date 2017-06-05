@@ -6,3 +6,4 @@ src/testdata.js
 .nvmrc
 .travis.yml
 webpack.base.config.js
+yarn.lock
