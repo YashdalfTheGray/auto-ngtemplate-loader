@@ -1,11 +1,22 @@
 {
-  "name": "auto-ngtemplate",
+  "name": "auto-ngtemplate-loader",
   "version": "1.0.0",
   "description": "Auto require AngularJS 1.x templates in Webpack style",
   "main": "index.js",
-  "repository": "https://github.com/yashdalfthegray/auto-ngtemplate",
+  "repository": "https://github.com/yashdalfthegray/auto-ngtemplate-loader",
+  "bugs": {
+    "url": "https://github.com/yashdalfthegray/auto-ngtemplate-loader/issues"
+  },
   "author": "YashdalfTheGray <yash.kulshrestha@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "webpack",
+    "loader",
+    "ngtemplate",
+    "angularjs",
+    "angular",
+    "templates"
+],
   "scripts": {
     "test": "ava src/**/*.spec.js",
     "clean": "git clean -xfd",
