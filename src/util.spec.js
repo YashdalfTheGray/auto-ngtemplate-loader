@@ -5,6 +5,7 @@ const {
     multipleDirectives,
     multipleDirectivesReplaced,
     testService,
+    nonStringTemplate,
     testDirective1,
     testDirective1Replaced,
     testDirective2,
@@ -17,6 +18,12 @@ const variableName = 'autoNgTemplateLoaderTemplate';
 test('replaceTemplateUrl returns the file if there is not a template', (t) => {
     t.deepEqual(
         replaceTemplateUrl(variableName, testService.split('\n')), testService.split('\n')
+    );
+});
+
+test('replaceTemplateUrl returns the file if there is a non-string template', (t) => {
+    t.deepEqual(
+        replaceTemplateUrl(variableName, nonStringTemplate.split('\n')), nonStringTemplate.split('\n')
     );
 });
 
