@@ -10,7 +10,15 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'auto-ngtemplate-loader']
+                use: [
+                    'babel-loader',
+                    {
+                        loader: 'auto-ngtemplate-loader',
+                        options: {
+                            variableName: 'autoNgTemplateLoaderTemplate'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.html$/,
