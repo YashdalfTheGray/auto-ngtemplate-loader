@@ -16,7 +16,7 @@
     "angularjs",
     "angular",
     "templates"
-],
+  ],
   "scripts": {
     "test": "ava src/**/*.spec.js",
     "clean": "git clean -xfd",
