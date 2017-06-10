@@ -7,7 +7,12 @@ function replaceTemplateUrl(variableName, lines) {
     }
 
     const templateRequires = lineNumbers.map((lineNumber, i) => {
-        const [, , templateUrl] = regEx.exec(lines[lineNumber]);
+        const [, , templateUrl] = regEx.exec(lines[lineNumber]) || [];
+
+        if (!templateUrl) {
+            return null;
+        }
+
         const lineReplacement = lines[lineNumber].replace(regEx, `$1${variableName}${i + 1}$3`);
 
         return {
@@ -15,7 +20,11 @@ function replaceTemplateUrl(variableName, lines) {
             lineNumber,
             lineReplacement
         };
-    });
+    }).filter(i => i !== null);
+
+    if (templateRequires.length === 0) {
+        return lines;
+    }
 
     const updatedLines = lines;
 
