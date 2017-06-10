@@ -9,7 +9,7 @@ test('loader works on files that need templates replaced', (t) => {
     const context = {
         callback(err, source) {
             t.is(err, null);
-            t.deepEqual(source, testDirective1Replaced);
+            t.deepEqual(source, testDirective1Replaced());
         }
     };
 
