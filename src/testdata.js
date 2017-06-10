@@ -3,6 +3,19 @@ const testService = `angular.module('test')
     getDescription: () => 'test description'
 }));`;
 
+const nonStringTemplate = `const template = require('./myTemplate.html');
+
+angular.module('test')
+.directive('myDirective', () => ({
+    restrict: 'AE',
+    controller: 'MyController',
+    controllerAs: 'MyCtrl',
+    templateUrl: template,
+    scope: {
+        value: '='
+    }
+}));`;
+
 const testDirective1 = `angular.module('test')
 .directive('myDirective', () => ({
     restrict: 'AE',
@@ -80,6 +93,7 @@ module.exports = {
     multipleDirectives,
     multipleDirectivesReplaced,
     testService,
+    nonStringTemplate,
     testDirective1,
     testDirective1Replaced,
     testDirective2,
