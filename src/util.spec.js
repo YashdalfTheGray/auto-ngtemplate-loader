@@ -29,18 +29,18 @@ test('replaceTemplateUrl returns the file if there is a non-string template', (t
 
 test('replaceTemplateUrl returns the modified lines when there is a templateUrl', (t) => {
     t.deepEqual(
-        replaceTemplateUrl(variableName, testDirective1.split('\n')), testDirective1Replaced.split('\n')
+        replaceTemplateUrl(variableName, testDirective1.split('\n')), testDirective1Replaced().split('\n')
     );
 });
 
 test('replaceTemplateUrl returns the modified lines when there is a templateUrl (another case)', (t) => {
     t.deepEqual(replaceTemplateUrl(
-        variableName, testDirective2.split('\n')), testDirective2Replaced.split('\n')
+        variableName, testDirective2.split('\n')), testDirective2Replaced().split('\n')
     );
 });
 
 test('replaceTemplateUrl can handle multiple templateUrls in a file', (t) => {
     t.deepEqual(
-        replaceTemplateUrl(variableName, multipleDirectives.split('\n')), multipleDirectivesReplaced.split('\n')
+        replaceTemplateUrl(variableName, multipleDirectives.split('\n')), multipleDirectivesReplaced().split('\n')
     );
 });
