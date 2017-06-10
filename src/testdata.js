@@ -27,7 +27,8 @@ const testDirective1 = `angular.module('test')
     }
 }));`;
 
-const testDirective1Replaced = `const autoNgTemplateLoaderTemplate1 = require('./myTemplate.html');
+const testDirective1Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
+`const ${varName}1 = require('./myTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -52,7 +53,8 @@ const testDirective2 = `angular.module('test')
     templateUrl:'./anotherTemplate.html'
 }));`;
 
-const testDirective2Replaced = `const autoNgTemplateLoaderTemplate1 = require('./anotherTemplate.html');
+const testDirective2Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
+`const ${varName}1 = require('./anotherTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -76,8 +78,9 @@ angular.module('test2')
     templateUrl: './helloWorldAgain.html'
 }));`;
 
-const multipleDirectivesReplaced = `const autoNgTemplateLoaderTemplate1 = require('./helloWorld.html');
-const autoNgTemplateLoaderTemplate2 = require('./helloWorldAgain.html');
+const multipleDirectivesReplaced = (varName = 'autoNgTemplateLoaderTemplate') =>
+`const ${varName}1 = require('./helloWorld.html');
+const ${varName}2 = require('./helloWorldAgain.html');
 
 angular.module('test')
 .directive('whatever', () => ({
