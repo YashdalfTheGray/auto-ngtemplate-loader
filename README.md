@@ -14,7 +14,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'some-other-loader', 'auto-ngtemplate-loader']
+                use: ['babel-loader', 'other-loaders', 'auto-ngtemplate-loader']
             }
         ]
     }
@@ -50,6 +50,14 @@ module.exports = {
 ```
 
 It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that the templates aren't put into the Angular template cache with absolute paths which contain platform specific or user specific information. This will affect the portability of the bundled code.
+
+### Options
+
+This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below. 
+
+| Name           | Type     | Default Value                  | Details                                                                                                                      |
+|----------------|----------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| `variableName` | `string` | `autoNgTemplateLoaderTemplate` | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.  |
 
 ## Development
 
