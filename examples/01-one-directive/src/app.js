@@ -18,5 +18,5 @@ angular.module('myApp', [])
         foo: '='
     },
     bindToController: true,
-    templateUrl: './app.tpl.html'
+    templateUrl: 'app.tpl.html'
 }));

@@ -12,7 +12,7 @@ export function OtherDirective() {
         restrict: 'E',
         controller: 'OtherController',
         controllerAs: 'OtherCtrl',
-        templateUrl: './otherDirective.tpl.html',
+        templateUrl: 'otherDirective.tpl.html',
         scope: {
             foo: '='
         },
