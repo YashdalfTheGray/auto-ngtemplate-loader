@@ -9,7 +9,11 @@ const {
     testDirective1,
     testDirective1Replaced,
     testDirective2,
-    testDirective2Replaced
+    testDirective2Replaced,
+    differentPath1,
+    differentPath1Replaced,
+    differentPath2,
+    differentPath2Replaced
 } = require('./testdata');
 
 const variableName = 'autoNgTemplateLoaderTemplate';
@@ -39,8 +43,27 @@ test('replaceTemplateUrl returns the modified lines when there is a templateUrl 
     );
 });
 
-test('replaceTemplateUrl can handle multiple templateUrls in a file', (t) => {
+test('replaceTemplateUrl handles multiple templateUrls in a file correctly', (t) => {
     t.deepEqual(
         replaceTemplateUrl(variableName, multipleDirectives.split('\n')), multipleDirectivesReplaced().split('\n')
+    );
+});
+
+test('replaceTemplateUrl handles a different variable name correctly', (t) => {
+    t.deepEqual(
+        replaceTemplateUrl('myTemplate', multipleDirectives.split('\n')),
+        multipleDirectivesReplaced('myTemplate').split('\n')
+    );
+});
+
+test('replaceTemplateUrl handles a template in a different path', (t) => {
+    t.deepEqual(
+        replaceTemplateUrl(variableName, differentPath1.split('\n')), differentPath1Replaced().split('\n')
+    );
+});
+
+test('replaceTemplateUrl handles a template in a subdirectory', (t) => {
+    t.deepEqual(
+        replaceTemplateUrl(variableName, differentPath2.split('\n')), differentPath2Replaced().split('\n')
     );
 });
