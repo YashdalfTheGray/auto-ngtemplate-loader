@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/auto-ngtemplate-loader.svg)](https://badge.fury.io/js/auto-ngtemplate-loader)
 [![Build Status](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader)
 
 # auto-ngtemplate-loader
@@ -53,7 +54,7 @@ It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that
 
 ### Options
 
-This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below. 
+This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below.
 
 | Name           | Type     | Default Value                  | Details                                                                                                                      |
 |----------------|----------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------|
