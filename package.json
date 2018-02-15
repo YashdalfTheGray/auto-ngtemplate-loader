@@ -24,7 +24,8 @@
     "one-directive": "webpack --config examples/01-one-directive/webpack.config.js",
     "many-directives": "webpack --config examples/02-many-directives/webpack.config.js",
     "multiple-directives": "webpack --config examples/03-multiple-directives-one-file/webpack.config.js",
-    "separated-templates": "webpack --config examples/04-separated-templates/webpack.config.js"
+    "separated-templates": "webpack --config examples/04-separated-templates/webpack.config.js",
+    "absolute-paths": "webpack --config examples/05-absolute-paths/webpack.config.js"
   },
   "dependencies": {
     "loader-utils": "~1.1.0",
