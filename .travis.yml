@@ -18,6 +18,7 @@ script:
     - npm run one-directive
     - npm run many-directives
     - npm run multiple-directives
+    - npm run absolute-paths
 
 cache:
     directories:
