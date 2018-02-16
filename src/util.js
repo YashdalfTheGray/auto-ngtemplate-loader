@@ -1,8 +1,9 @@
 const { urlToRequest } = require('loader-utils');
 
-function replaceTemplateUrl(variableName, lines) {
+function replaceTemplateUrl(variableName, lines, resolver) {
     const regEx = /(^\s*templateUrl:\s*)['"](.*)['"](,*)$/;
     const lineNumbers = lines.reduce((result, line, i) => (/templateUrl/.test(line) ? result.concat(i) : result), []);
+    const resolverFunc = resolver || urlToRequest;
 
     if (!lineNumbers.length) {
         return lines;
@@ -35,7 +36,7 @@ function replaceTemplateUrl(variableName, lines) {
     });
 
     return [
-        ...templateRequires.map((x, i) => `const ${variableName}${i + 1} = require('${urlToRequest(x.templateUrl)}');`),
+        ...templateRequires.map((x, i) => `const ${variableName}${i + 1} = require('${resolverFunc(x.templateUrl)}');`),
         ``,
         ...updatedLines
     ];
