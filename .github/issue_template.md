@@ -20,8 +20,5 @@
 **Debug Info:**
 
 ```text
-If you are experiencing a bug in your own package that relies on atom-ts-transpiler, and you believe
-it is caused by files being transpiled incorrectly (or not at all,) please follow the instructions
-to install "atom-transpiler-debug-tool" (https://www.npmjs.com/package/atom-transpiler-debug-tool)
-as a dev dependency, run it, and copy/paste the output here. Thanks! ^◡^
+If there is any output that you can add here that will help me debug this problem, please do so!
 ```
