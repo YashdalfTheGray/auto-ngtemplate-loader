@@ -2,8 +2,7 @@ language: node_js
 
 node_js:
     - "node"
-    - "7"
-    - "6.10"
+    - "8"
     - "6"
 
 install:
@@ -18,6 +17,7 @@ script:
     - npm run one-directive
     - npm run many-directives
     - npm run multiple-directives
+    - npm run absolute-paths
 
 cache:
     directories:

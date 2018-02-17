@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/auto-ngtemplate-loader.svg)](https://badge.fury.io/js/auto-ngtemplate-loader)
 [![Build Status](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader)
 
 # auto-ngtemplate-loader
@@ -53,11 +54,12 @@ It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that
 
 ### Options
 
-This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below. 
+This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below.
 
 | Name           | Type     | Default Value                  | Details                                                                                                                      |
 |----------------|----------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `variableName` | `string` | `autoNgTemplateLoaderTemplate` | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.  |
+| `variableName` | `string`   | `autoNgTemplateLoaderTemplate` | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.  |
+| `pathResolver` | `(path: string) => string` | [`urlToRequest`](https://github.com/webpack/loader-utils#urltorequest) | This function can be used to customize the require path in cases where templates don't use relative paths. This function is called with the path of the template and must return a string which is a valid path.
 
 ## Development
 
@@ -91,3 +93,6 @@ The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's p
 * [Webpack Loader API](https://webpack.js.org/api/loaders/)
 * [How to write a Webpack plugin](https://webpack.js.org/development/how-to-write-a-plugin/)
 * [Webpack Plugin API](https://webpack.js.org/api/plugins/)
+* [Webpack `loader-utils`](https://github.com/webpack/loader-utils)
+
+Issue and PR templates derived from [smhxx/atom-ts-transpiler](https://github.com/smhxx/atom-ts-transpiler).
