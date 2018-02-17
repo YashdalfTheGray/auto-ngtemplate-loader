@@ -94,3 +94,5 @@ The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's p
 * [How to write a Webpack plugin](https://webpack.js.org/development/how-to-write-a-plugin/)
 * [Webpack Plugin API](https://webpack.js.org/api/plugins/)
 * [Webpack `loader-utils`](https://github.com/webpack/loader-utils)
+
+Issue and PR templates derived from [smhxx/atom-ts-transpiler](https://github.com/smhxx/atom-ts-transpiler).
