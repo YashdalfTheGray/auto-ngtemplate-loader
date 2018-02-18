@@ -24,7 +24,7 @@ module.exports = function autoNgTemplateLoader(source, map) {
             return;
         }
 
-        resolverFromConfig = _.get(this.options.autoNgTemplateLoader.pathResolver);
+        resolverFromConfig = _.get(this, 'options.autoNgTemplateLoader.pathResolver');
 
         if (!resolverFromConfig) {
             this.callback(
