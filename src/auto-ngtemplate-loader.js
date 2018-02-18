@@ -5,10 +5,14 @@ const { isValid } = require('var-validator');
 const { replaceTemplateUrl } = require('./util');
 
 module.exports = function autoNgTemplateLoader(source, map) {
-    const { variableName = 'autoNgTemplateLoaderTemplate', pathResolver } = loaderUtils.getOptions(this) || {};
+    const {
+        variableName = 'autoNgTemplateLoaderTemplate',
+        pathResolver,
+        useResolverFromConfig = false
+    } = loaderUtils.getOptions(this) || {};
 
-    if (pathResolver && typeof pathResolver(this.resourcePath) !== 'string') {
-        this.callback(new Error('The path resolver function does not return a string'), null, null);
+    if (useResolverFromConfig && this.version > 1) {
+        this.callback(new Error('Resolver required to be passed as an option with Webpack v2'), null, null);
         return;
     }
 
@@ -22,6 +26,11 @@ module.exports = function autoNgTemplateLoader(source, map) {
         return;
     }
 
-    const newSource = replaceTemplateUrl(variableName, source.split('\n'), pathResolver).join('\n');
-    this.callback(null, newSource, map);
+    try {
+        const newSource = replaceTemplateUrl(variableName, source.split('\n'), pathResolver).join('\n');
+        this.callback(null, newSource, map);
+    }
+    catch (e) {
+        this.callback(e, null, null);
+    }
 };

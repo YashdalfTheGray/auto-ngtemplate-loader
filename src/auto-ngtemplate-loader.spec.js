@@ -62,34 +62,19 @@ test('loader throws an error when variable is not valid', (t) => {
     loader.call(context, testDirective1);
 });
 
-test('loader throws an error when the resolver function does not return a string', (t) => {
+test('loader throws an error if webpack v2 and useResolverFromConfig is true', (t) => {
     t.plan(2);
 
     const context = {
         callback: function callback(err, source) {
-            t.deepEqual(err, new Error('The path resolver function does not return a string'));
+            t.deepEqual(err, new Error('Resolver required to be passed as an option with Webpack v2'));
             t.is(source, null);
         },
         query: {
             variableName: 'testVariable',
-            pathResolver: () => 1
-        }
-    };
-
-    loader.call(context, testDirective1);
-});
-
-test('loader accepts a function returning a string as the pathResolver', (t) => {
-    t.plan(1);
-
-    const context = {
-        callback: function callback(err) {
-            t.is(err, null);
+            useResolverFromConfig: true
         },
-        query: {
-            variableName: 'testVariable',
-            pathResolver: p => `'string'${p}`
-        }
+        version: 2
     };
 
     loader.call(context, testDirective1);

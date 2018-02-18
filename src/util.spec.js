@@ -67,3 +67,10 @@ test('replaceTemplateUrl handles a template in a subdirectory', (t) => {
         replaceTemplateUrl(variableName, differentPath2.split('\n')), differentPath2Replaced().split('\n')
     );
 });
+
+
+test('resolver not returning a string throws error', (t) => {
+    t.throws(() => replaceTemplateUrl(
+        variableName, testDirective1.split('\n'), () => 1
+    ));
+});
