@@ -63,7 +63,7 @@ This module supports configuration through either the `options` object method or
 
 ### Webpack v1 Compatible Options
 
-Since Webpack v1 only supports query strings for loaders and doesn't allow passing a function as an option, this loader has a `useResolverFromConfig` boolean option that can be passed in through the query string and the loader will look for the resolver in the Webpack configuration object under the key `autoNgTemplateLoader`. The only acceptable member of `autoNgTemplateLoader` is `pathResolver` which should be a function that returns a string for all cases. An example is below.
+Since Webpack v1 only supports query strings for loaders and doesn't allow passing a function as an option, this loader has a `useResolverFromConfig` boolean option that can be passed in through the query string. The loader will look for the resolver in the Webpack configuration object under the key `autoNgTemplateLoader`. The only acceptable member of `autoNgTemplateLoader` is `pathResolver` which should be a function that returns a string for all cases. An example is below.
 
 ```javascript
 module.exports = {
@@ -82,7 +82,7 @@ module.exports = {
 };
 ```
 
-**Note**: The loader will throw an error if `useResolverFromConfig` is used in Webpack v2 or newer. The recommended way to pass the function is through the options in that case. This is because the Loader API v2 has deprecated a property that is used for the v1 workaround and going forward, the loader will not use it. 
+**Note**: The loader will throw an error if `useResolverFromConfig` is used in Webpack v2 or newer. The recommended way to pass the function is through the options in that case. This is because the Loader API v2 has deprecated a property that is used for the v1 workaround. The loader will check the version and report an error. 
 
 ## Development
 
