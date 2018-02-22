@@ -1,15 +1,44 @@
 const loaderUtils = require('loader-utils');
 const { escapeRegExp } = require('lodash');
 const { isValid } = require('var-validator');
+const _ = require('lodash');
 
 const { replaceTemplateUrl } = require('./util');
 
 module.exports = function autoNgTemplateLoader(source, map) {
-    const { variableName = 'autoNgTemplateLoaderTemplate', pathResolver } = loaderUtils.getOptions(this) || {};
+    let resolverFunc;
+    let resolverFromConfig;
+    const {
+        variableName = 'autoNgTemplateLoaderTemplate',
+        pathResolver,
+        useResolverFromConfig = false
+    } = loaderUtils.getOptions(this) || {};
 
-    if (pathResolver && typeof pathResolver(this.resourcePath) !== 'string') {
-        this.callback(new Error('The path resolver function does not return a string'), null, null);
-        return;
+    if (useResolverFromConfig) {
+        if (this.version > 1) {
+            this.callback(
+                new Error('Resolver required to be passed as an option with Webpack v2'),
+                null,
+                null
+            );
+            return;
+        }
+
+        resolverFromConfig = _.get(this, 'options.autoNgTemplateLoader.pathResolver');
+
+        if (!resolverFromConfig) {
+            this.callback(
+                new Error('function pathResolver not found in autoNgTemplateLoader in the config'),
+                null,
+                null
+            );
+            return;
+        }
+
+        resolverFunc = resolverFromConfig;
+    }
+    else {
+        resolverFunc = pathResolver;
     }
 
     if (!isValid(variableName)) {
@@ -22,6 +51,11 @@ module.exports = function autoNgTemplateLoader(source, map) {
         return;
     }
 
-    const newSource = replaceTemplateUrl(variableName, source.split('\n'), pathResolver).join('\n');
-    this.callback(null, newSource, map);
+    try {
+        const newSource = replaceTemplateUrl(variableName, source.split('\n'), resolverFunc).join('\n');
+        this.callback(null, newSource, map);
+    }
+    catch (e) {
+        this.callback(e, null, null);
+    }
 };

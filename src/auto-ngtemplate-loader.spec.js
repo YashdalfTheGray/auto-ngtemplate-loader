@@ -1,4 +1,5 @@
 const test = require('ava');
+const { urlToRequest } = require('loader-utils');
 
 const loader = require('./auto-ngtemplate-loader');
 const { testDirective1, testDirective1Replaced } = require('./testdata');
@@ -62,33 +63,59 @@ test('loader throws an error when variable is not valid', (t) => {
     loader.call(context, testDirective1);
 });
 
-test('loader throws an error when the resolver function does not return a string', (t) => {
+test('loader throws an error if webpack v2 and useResolverFromConfig is true', (t) => {
     t.plan(2);
 
     const context = {
         callback: function callback(err, source) {
-            t.deepEqual(err, new Error('The path resolver function does not return a string'));
+            t.deepEqual(err, new Error('Resolver required to be passed as an option with Webpack v2'));
             t.is(source, null);
         },
         query: {
             variableName: 'testVariable',
-            pathResolver: () => 1
-        }
+            useResolverFromConfig: true
+        },
+        version: 2
     };
 
     loader.call(context, testDirective1);
 });
 
-test('loader accepts a function returning a string as the pathResolver', (t) => {
-    t.plan(1);
+test('loader throws an error if useResolverFromConfig is true and no resolver found', (t) => {
+    t.plan(2);
 
     const context = {
-        callback: function callback(err) {
-            t.is(err, null);
+        callback: function callback(err, source) {
+            t.deepEqual(err, new Error('function pathResolver not found in autoNgTemplateLoader in the config'));
+            t.is(source, null);
         },
         query: {
             variableName: 'testVariable',
-            pathResolver: p => `'string'${p}`
+            useResolverFromConfig: true
+        },
+        version: 1
+    };
+
+    loader.call(context, testDirective1);
+});
+
+test('accepts a function from the config if webpack v1', (t) => {
+    t.plan(2);
+
+    const context = {
+        callback: function callback(err, source) {
+            t.is(err, null);
+            t.is(source, testDirective1Replaced('testVariable'));
+        },
+        query: {
+            variableName: 'testVariable',
+            useResolverFromConfig: true
+        },
+        version: 1,
+        options: {
+            autoNgTemplateLoader: {
+                pathResolver: urlToRequest
+            }
         }
     };
 

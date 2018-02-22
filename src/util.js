@@ -16,6 +16,10 @@ function replaceTemplateUrl(variableName, lines, resolver) {
             return null;
         }
 
+        if (resolver && typeof resolver(templateUrl) !== 'string') {
+            throw new Error(`Expected path resolver to return string for ${templateUrl}`);
+        }
+
         const lineReplacement = lines[lineNumber].replace(regEx, `$1${variableName}${i + 1}$3`);
 
         return {

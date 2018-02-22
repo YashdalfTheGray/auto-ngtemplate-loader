@@ -61,7 +61,32 @@ This module supports configuration through either the `options` object method or
 | `variableName` | `string`   | `autoNgTemplateLoaderTemplate` | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.  |
 | `pathResolver` | `(path: string) => string` | [`urlToRequest`](https://github.com/webpack/loader-utils#urltorequest) | This function can be used to customize the require path in cases where templates don't use relative paths. This function is called with the path of the template and must return a string which is a valid path.
 
+### Webpack v1 Compatible Options
+
+Since Webpack v1 only supports query strings for loaders and doesn't allow passing a function as an option, this loader has a `useResolverFromConfig` boolean option that can be passed in through the query string. The loader will look for the resolver in the Webpack configuration object under the key `autoNgTemplateLoader`. The only acceptable member of `autoNgTemplateLoader` is `pathResolver` which should be a function that returns a string for all cases. An example is below.
+
+```javascript
+module.exports = {
+    autoNgTemplateLoader: {
+        pathResolver: p => p.replace(/src/, '..').substring(1)
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader!auto-ngtemplate-loader?variableName=testVar&useResolverFromConfig=true'
+            }
+        ]
+    }
+};
+```
+
+**Note**: The loader will throw an error if `useResolverFromConfig` is used in Webpack v2 or newer. The recommended way to pass the function is through the options in that case. This is because the Loader API v2 has deprecated a property that is used for the v1 workaround. The loader will check the version and report an error. 
+
 ## Development
+
+Please follow the guidelines in the [contribution guide](.github/CONTRIBUTING.md) for development.
 
 ### Installation
 
