@@ -1,22 +1,23 @@
 /* global angular:false MyCtrl:false */
 
-angular.module('myApp', [])
-.service('myService', () => ({
+angular
+  .module('myApp', [])
+  .service('myService', () => ({
     getText: () => 'Test text'
-}))
-.controller('MyController', [
+  }))
+  .controller('MyController', [
     'myService',
-    (myService) => {
-        MyCtrl.message = myService.getText();
+    myService => {
+      MyCtrl.message = myService.getText();
     }
-])
-.directive('myDirective', () => ({
+  ])
+  .directive('myDirective', () => ({
     restrict: 'E',
     controller: 'MyController',
     controllerAs: 'MyCtrl',
     scope: {
-        foo: '='
+      foo: '='
     },
     bindToController: true,
     templateUrl: 'app.tpl.html'
-}));
+  }));

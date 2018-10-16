@@ -1,6 +1,6 @@
 export const aServiceName = 'aService';
 export function aService() {
-    return {
-        getText: () => 'A Directive'
-    };
+  return {
+    getText: () => 'A Directive'
+  };
 }
