@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader)
 
 # auto-ngtemplate-loader
+
 Auto require AngularJS 1.x templates in Webpack style
 
 ## Usage
@@ -10,15 +11,15 @@ Install the package by running `npm install auto-ngtemplate-loader`. Once instal
 
 ```js
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader', 'other-loaders', 'auto-ngtemplate-loader']
-            }
-        ]
-    }
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'other-loaders', 'auto-ngtemplate-loader']
+      }
+    ]
+  }
 };
 ```
 
@@ -28,26 +29,26 @@ The next step is to add `ngtemplate-loader` and a loader that you want to handle
 
 ```js
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'ngtemplate-loader',
-                        options: {
-                            relativeTo: 'src/'
-                        }
-                    },
-                    {
-                        loader: 'html-loader'
-                    }
-                ]
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ngtemplate-loader',
+            options: {
+              relativeTo: 'src/'
             }
+          },
+          {
+            loader: 'html-loader'
+          }
         ]
-    }
-}
+      }
+    ]
+  }
+};
 ```
 
 It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that the templates aren't put into the Angular template cache with absolute paths which contain platform specific or user specific information. This will affect the portability of the bundled code.
@@ -56,10 +57,10 @@ It is a good idea to add the `relativeTo` option for `ngtemplate-loader` so that
 
 This module supports configuration through either the `options` object method or the query string method. The valid options are listed in the table below.
 
-| Name           | Type     | Default Value                  | Details                                                                                                                      |
-|----------------|----------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `variableName` | `string`   | `autoNgTemplateLoaderTemplate` | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.  |
-| `pathResolver` | `(path: string) => string` | [`urlToRequest`](https://github.com/webpack/loader-utils#urltorequest) | This function can be used to customize the require path in cases where templates don't use relative paths. This function is called with the path of the template and must return a string which is a valid path.
+| Name           | Type                       | Default Value                                                          | Details                                                                                                                                                                                                          |
+| -------------- | -------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `variableName` | `string`                   | `autoNgTemplateLoaderTemplate`                                         | The variable name that gets injected into the compiled code. This is included so that variable collisions can be prevented.                                                                                      |
+| `pathResolver` | `(path: string) => string` | [`urlToRequest`](https://github.com/webpack/loader-utils#urltorequest) | This function can be used to customize the require path in cases where templates don't use relative paths. This function is called with the path of the template and must return a string which is a valid path. |
 
 ### Webpack v1 Compatible Options
 
@@ -67,22 +68,23 @@ Since Webpack v1 only supports query strings for loaders and doesn't allow passi
 
 ```javascript
 module.exports = {
-    autoNgTemplateLoader: {
-        pathResolver: p => p.replace(/src/, '..').substring(1)
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader!auto-ngtemplate-loader?variableName=testVar&useResolverFromConfig=true'
-            }
-        ]
-    }
+  autoNgTemplateLoader: {
+    pathResolver: p => p.replace(/src/, '..').substring(1)
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader:
+          'babel-loader!auto-ngtemplate-loader?variableName=testVar&useResolverFromConfig=true'
+      }
+    ]
+  }
 };
 ```
 
-**Note**: The loader will throw an error if `useResolverFromConfig` is used in Webpack v2 or newer. The recommended way to pass the function is through the options in that case. This is because the Loader API v2 has deprecated a property that is used for the v1 workaround. The loader will check the version and report an error. 
+**Note**: The loader will throw an error if `useResolverFromConfig` is used in Webpack v2 or newer. The recommended way to pass the function is through the options in that case. This is because the Loader API v2 has deprecated a property that is used for the v1 workaround. The loader will check the version and report an error.
 
 ## Development
 
@@ -114,10 +116,10 @@ The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's p
 
 ## Resources
 
-* [How to write a Webpack loader](https://webpack.js.org/development/how-to-write-a-loader/)
-* [Webpack Loader API](https://webpack.js.org/api/loaders/)
-* [How to write a Webpack plugin](https://webpack.js.org/development/how-to-write-a-plugin/)
-* [Webpack Plugin API](https://webpack.js.org/api/plugins/)
-* [Webpack `loader-utils`](https://github.com/webpack/loader-utils)
+- [How to write a Webpack loader](https://webpack.js.org/development/how-to-write-a-loader/)
+- [Webpack Loader API](https://webpack.js.org/api/loaders/)
+- [How to write a Webpack plugin](https://webpack.js.org/development/how-to-write-a-plugin/)
+- [Webpack Plugin API](https://webpack.js.org/api/plugins/)
+- [Webpack `loader-utils`](https://github.com/webpack/loader-utils)
 
 Issue and PR templates derived from [smhxx/atom-ts-transpiler](https://github.com/smhxx/atom-ts-transpiler).

@@ -28,7 +28,7 @@ const testDirective1 = `angular.module('test')
 }));`;
 
 const testDirective1Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
-`const ${varName}1 = require('./myTemplate.html');
+  `const ${varName}1 = require('./myTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -54,7 +54,7 @@ const testDirective2 = `angular.module('test')
 }));`;
 
 const testDirective2Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
-`const ${varName}1 = require('./anotherTemplate.html');
+  `const ${varName}1 = require('./anotherTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -79,7 +79,7 @@ angular.module('test2')
 }));`;
 
 const multipleDirectivesReplaced = (varName = 'autoNgTemplateLoaderTemplate') =>
-`const ${varName}1 = require('./helloWorld.html');
+  `const ${varName}1 = require('./helloWorld.html');
 const ${varName}2 = require('./helloWorldAgain.html');
 
 angular.module('test')
@@ -104,7 +104,7 @@ const differentPath1 = `angular.module('test')
 }));`;
 
 const differentPath1Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
-`const ${varName}1 = require('../html/myTemplate.html');
+  `const ${varName}1 = require('../html/myTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -129,7 +129,7 @@ const differentPath2 = `angular.module('test')
 }));`;
 
 const differentPath2Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
-`const ${varName}1 = require('./html/myTemplate.html');
+  `const ${varName}1 = require('./html/myTemplate.html');
 
 angular.module('test')
 .directive('myDirective', () => ({
@@ -143,16 +143,16 @@ angular.module('test')
 }));`;
 
 module.exports = {
-    multipleDirectives,
-    multipleDirectivesReplaced,
-    testService,
-    nonStringTemplate,
-    testDirective1,
-    testDirective1Replaced,
-    testDirective2,
-    testDirective2Replaced,
-    differentPath1,
-    differentPath1Replaced,
-    differentPath2,
-    differentPath2Replaced
+  multipleDirectives,
+  multipleDirectivesReplaced,
+  testService,
+  nonStringTemplate,
+  testDirective1,
+  testDirective1Replaced,
+  testDirective2,
+  testDirective2Replaced,
+  differentPath1,
+  differentPath1Replaced,
+  differentPath2,
+  differentPath2Replaced
 };

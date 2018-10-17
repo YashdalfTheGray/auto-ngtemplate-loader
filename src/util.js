@@ -1,51 +1,66 @@
 const { urlToRequest } = require('loader-utils');
 
 function replaceTemplateUrl(variableName, lines, resolver) {
-    const regEx = /(^\s*templateUrl:\s*)['"](.*)['"](,*)$/;
-    const lineNumbers = lines.reduce((result, line, i) => (/templateUrl/.test(line) ? result.concat(i) : result), []);
-    const resolverFunc = resolver || urlToRequest;
+  const regEx = /(^\s*templateUrl:\s*)['"](.*)['"](,*)$/;
+  const lineNumbers = lines.reduce(
+    (result, line, i) => (/templateUrl/.test(line) ? result.concat(i) : result),
+    []
+  );
+  const resolverFunc = resolver || urlToRequest;
 
-    if (!lineNumbers.length) {
-        return lines;
-    }
+  if (!lineNumbers.length) {
+    return lines;
+  }
 
-    const templateRequires = lineNumbers.map((lineNumber, i) => {
-        const [, , templateUrl] = regEx.exec(lines[lineNumber]) || [];
+  const templateRequires = lineNumbers
+    .map((lineNumber, i) => {
+      const [, , templateUrl] = regEx.exec(lines[lineNumber]) || [];
 
-        if (!templateUrl) {
-            return null;
-        }
+      if (!templateUrl) {
+        return null;
+      }
 
-        if (resolver && typeof resolver(templateUrl) !== 'string') {
-            throw new Error(`Expected path resolver to return string for ${templateUrl}`);
-        }
+      if (resolver && typeof resolver(templateUrl) !== 'string') {
+        throw new Error(
+          `Expected path resolver to return string for ${templateUrl}`
+        );
+      }
 
-        const lineReplacement = lines[lineNumber].replace(regEx, `$1${variableName}${i + 1}$3`);
+      const lineReplacement = lines[lineNumber].replace(
+        regEx,
+        `$1${variableName}${i + 1}$3`
+      );
 
-        return {
-            templateUrl,
-            lineNumber,
-            lineReplacement
-        };
-    }).filter(i => i !== null);
+      return {
+        templateUrl,
+        lineNumber,
+        lineReplacement
+      };
+    })
+    .filter(i => i !== null);
 
-    if (templateRequires.length === 0) {
-        return lines;
-    }
+  if (templateRequires.length === 0) {
+    return lines;
+  }
 
-    const updatedLines = lines;
+  const updatedLines = lines;
 
-    templateRequires.forEach((x) => {
-        updatedLines[x.lineNumber] = x.lineReplacement;
-    });
+  templateRequires.forEach(x => {
+    updatedLines[x.lineNumber] = x.lineReplacement;
+  });
 
-    return [
-        ...templateRequires.map((x, i) => `const ${variableName}${i + 1} = require('${resolverFunc(x.templateUrl)}');`),
-        ``,
-        ...updatedLines
-    ];
+  return [
+    ...templateRequires.map(
+      (x, i) =>
+        `const ${variableName}${i + 1} = require('${resolverFunc(
+          x.templateUrl
+        )}');`
+    ),
+    ``,
+    ...updatedLines
+  ];
 }
 
 module.exports = {
-    replaceTemplateUrl
+  replaceTemplateUrl
 };
