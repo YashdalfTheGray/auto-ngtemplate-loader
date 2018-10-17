@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v1.3.1](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v1.3.1) (2018-10-17)
+
+### Fixed
+
+- Ran an NPM security audit and fixed the issues
+- Updated package versions, switched to `@babel/preset-env` instead of `babel-preset-es2015`
+- Added `prettier` to the codebase
+
 ## [v1.3.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v1.3.0) (2018-02-21)
 
 ### Added
