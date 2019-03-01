@@ -31,7 +31,9 @@ function replaceTemplateUrl(variableName, lines, resolver) {
         `$1${variableName}${i + 1}$3`
       );
 
+      const lineVariable = `${variableName}${i + 1}`
       return {
+        lineVariable,
         templateUrl,
         lineNumber,
         lineReplacement
@@ -52,7 +54,7 @@ function replaceTemplateUrl(variableName, lines, resolver) {
   return [
     ...templateRequires.map(
       (x, i) =>
-        `const ${variableName}${i + 1} = require('${resolverFunc(
+        `const ${x.lineVariable} = require('${resolverFunc(
           x.templateUrl
         )}');`
     ),
