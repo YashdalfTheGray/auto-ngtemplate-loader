@@ -15,6 +15,7 @@ function replaceTemplateUrl(variableName, lines, resolver) {
   const templateRequires = lineNumbers
     .map((lineNumber, i) => {
       const [, , templateUrl] = regEx.exec(lines[lineNumber]) || [];
+      const lineVariable = `${variableName}${i + 1}`;
 
       if (!templateUrl) {
         return null;
@@ -28,10 +29,11 @@ function replaceTemplateUrl(variableName, lines, resolver) {
 
       const lineReplacement = lines[lineNumber].replace(
         regEx,
-        `$1${variableName}${i + 1}$3`
+        `$1${lineVariable}$3`
       );
 
       return {
+        lineVariable,
         templateUrl,
         lineNumber,
         lineReplacement
@@ -51,10 +53,8 @@ function replaceTemplateUrl(variableName, lines, resolver) {
 
   return [
     ...templateRequires.map(
-      (x, i) =>
-        `const ${variableName}${i + 1} = require('${resolverFunc(
-          x.templateUrl
-        )}');`
+      x =>
+        `const ${x.lineVariable} = require('${resolverFunc(x.templateUrl)}');`
     ),
     ``,
     ...updatedLines
