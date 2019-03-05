@@ -106,11 +106,11 @@ The tests for this package are written in with ava. They can be run by running `
 
 ### Linting
 
-This project uses ESLint. All the requisite files can be linted using `npm run linter`. The rules for this project are located in `eslintrc.json`.
+This project uses ESLint. All the requisite files can be linted using `npm run linter`. The rules for this project are located in `eslintrc.json`. This will also report prettier errors.
 
 ### Miscellaneous
 
-This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v6.10.3 which is the current LTS release. However, any Node.js version greater than v6.10.3 should also work.
+This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v10.15.2 which is the current LTS release. However, any Node.js version greater than v10.15.2 should also work.
 
 The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's package manager. Normal `yarn` commands apply.
 

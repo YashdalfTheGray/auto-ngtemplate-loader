@@ -3,6 +3,7 @@ src/**/*.spec.js
 src/testdata.js
 .babelrc
 .eslintrc.json
+.prettierrc
 .nvmrc
 .travis.yml
 webpack.base.config.js
