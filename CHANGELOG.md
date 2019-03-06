@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v1.3.2](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v1.3.2) (2019-03-06)
+
+### Fixed
+
+- Updated outdated npm packages
+- PR: fix template variable when templateUrl is null [#11][1]
+
 ## [v1.3.1](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v1.3.1) (2018-10-17)
 
 ### Fixed
@@ -50,3 +57,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [v1.0.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v1.0.0) (2017-06-04)
 
 First release of the `auto-ngtemplate-loader`
+
+[1]: https://github.com/YashdalfTheGray/auto-ngtemplate-loader/pull/11
