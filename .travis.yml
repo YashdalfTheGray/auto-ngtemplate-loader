@@ -1,25 +1,23 @@
 language: node_js
 
 node_js:
-    - "node"
-    - "10"
-    - "8"
-    - "6"
+  - 'node'
+  - '12'
+  - '10'
+  - '8'
+  - '6'
 
 install:
-    - npm install
-
-before_script:
-    - npm install html-loader ngtemplate-loader
+  - npm install
 
 script:
-    - npm test
-    - npm run linter
-    - npm run one-directive
-    - npm run many-directives
-    - npm run multiple-directives
-    - npm run absolute-paths
+  - npm test
+  - npm run linter
+  - npm run one-directive
+  - npm run many-directives
+  - npm run multiple-directives
+  - npm run absolute-paths
 
 cache:
-    directories:
-        - "node_modules"
+  directories:
+    - 'node_modules'
