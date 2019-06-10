@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v2.0.1](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v2.0.1) (2019-06-09)
+
+### Fixed
+
+- `templateUrl` detection on Windows ([#14](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/issues/14))
+
 ## [v2.0.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v2.0.0) (2019-06-07)
 
 ### Breaking
