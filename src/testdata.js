@@ -68,6 +68,31 @@ angular.module('test')
     templateUrl:${varName}1
 }));`;
 
+const testDirective3 = `angular.module('test')
+.directive('myDirective', () => ({
+    restrict : 'AE',
+    controller : 'MyController',
+    controllerAs : 'MyCtrl',
+    templateUrl : 'myTemplate.html',
+    scope : {
+        value: '='
+    }
+}));`;
+
+const testDirective3Replaced = (varName = 'autoNgTemplateLoaderTemplate') =>
+  `const ${varName}1 = require('./myTemplate.html');
+
+angular.module('test')
+.directive('myDirective', () => ({
+    restrict : 'AE',
+    controller : 'MyController',
+    controllerAs : 'MyCtrl',
+    templateUrl : ${varName}1,
+    scope : {
+        value: '='
+    }
+}));`;
+
 const multipleDirectives = `angular.module('test')
 .directive('whatever', () => ({
     templateUrl: 'helloWorld.html'
@@ -151,6 +176,8 @@ module.exports = {
   testDirective1Replaced,
   testDirective2,
   testDirective2Replaced,
+  testDirective3,
+  testDirective3Replaced,
   differentPath1,
   differentPath1Replaced,
   differentPath2,
