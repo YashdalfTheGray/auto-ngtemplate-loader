@@ -10,6 +10,8 @@ const {
   testDirective1Replaced,
   testDirective2,
   testDirective2Replaced,
+  testDirective3,
+  testDirective3Replaced,
   differentPath1,
   differentPath1Replaced,
   differentPath2,
@@ -43,6 +45,13 @@ test('replaceTemplateUrl returns the modified lines when there is a templateUrl 
   t.deepEqual(
     replaceTemplateUrl(variableName, testDirective2.split('\n')),
     testDirective2Replaced().split('\n')
+  );
+});
+
+test('replaceTemplateUrl returns the modified lines with spacing between templateUrl and colon', t => {
+  t.deepEqual(
+    replaceTemplateUrl(variableName, testDirective3.split('\n')),
+    testDirective3Replaced().split('\n')
   );
 });
 
