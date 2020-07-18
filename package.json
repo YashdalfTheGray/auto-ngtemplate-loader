@@ -25,7 +25,8 @@
     "many-directives": "webpack --config examples/02-many-directives/webpack.config.js",
     "multiple-directives": "webpack --config examples/03-multiple-directives-one-file/webpack.config.js",
     "separated-templates": "webpack --config examples/04-separated-templates/webpack.config.js",
-    "absolute-paths": "webpack --config examples/05-absolute-paths/webpack.config.js"
+    "absolute-paths": "webpack --config examples/05-absolute-paths/webpack.config.js",
+    "prettier": "prettier --write src/**/*.js examples/**/*.js index.js webpack.*.js"
   },
   "dependencies": {
     "html-loader": "^1.1.0",

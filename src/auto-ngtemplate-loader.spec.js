@@ -4,20 +4,20 @@ const { urlToRequest } = require('loader-utils');
 const loader = require('./auto-ngtemplate-loader');
 const { testDirective1, testDirective1Replaced } = require('./testdata');
 
-test('loader works on files that need templates replaced', t => {
+test('loader works on files that need templates replaced', (t) => {
   t.plan(2);
 
   const context = {
     callback(err, source) {
       t.is(err, null);
       t.deepEqual(source, testDirective1Replaced());
-    }
+    },
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader works with a query object', t => {
+test('loader works with a query object', (t) => {
   t.plan(2);
 
   const context = {
@@ -26,14 +26,14 @@ test('loader works with a query object', t => {
       t.deepEqual(source, testDirective1Replaced('testVariable'));
     },
     query: {
-      variableName: 'testVariable'
-    }
+      variableName: 'testVariable',
+    },
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader works with an query string', t => {
+test('loader works with an query string', (t) => {
   t.plan(2);
 
   const context = {
@@ -41,13 +41,13 @@ test('loader works with an query string', t => {
       t.is(err, null);
       t.deepEqual(source, testDirective1Replaced('testVariable'));
     },
-    query: '?variableName=testVariable'
+    query: '?variableName=testVariable',
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader throws an error when variable is not valid', t => {
+test('loader throws an error when variable is not valid', (t) => {
   t.plan(2);
 
   const context = {
@@ -56,14 +56,14 @@ test('loader throws an error when variable is not valid', t => {
       t.is(source, null);
     },
     query: {
-      variableName: 'test variable'
-    }
+      variableName: 'test variable',
+    },
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader throws an error if webpack v2 and useResolverFromConfig is true', t => {
+test('loader throws an error if webpack v2 and useResolverFromConfig is true', (t) => {
   t.plan(2);
 
   const context = {
@@ -76,15 +76,15 @@ test('loader throws an error if webpack v2 and useResolverFromConfig is true', t
     },
     query: {
       variableName: 'testVariable',
-      useResolverFromConfig: true
+      useResolverFromConfig: true,
     },
-    version: 2
+    version: 2,
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader throws an error if useResolverFromConfig is true and no resolver found', t => {
+test('loader throws an error if useResolverFromConfig is true and no resolver found', (t) => {
   t.plan(2);
 
   const context = {
@@ -99,15 +99,15 @@ test('loader throws an error if useResolverFromConfig is true and no resolver fo
     },
     query: {
       variableName: 'testVariable',
-      useResolverFromConfig: true
+      useResolverFromConfig: true,
     },
-    version: 1
+    version: 1,
   };
 
   loader.call(context, testDirective1);
 });
 
-test('accepts a function from the config if webpack v1', t => {
+test('accepts a function from the config if webpack v1', (t) => {
   t.plan(2);
 
   const context = {
@@ -117,14 +117,14 @@ test('accepts a function from the config if webpack v1', t => {
     },
     query: {
       variableName: 'testVariable',
-      useResolverFromConfig: true
+      useResolverFromConfig: true,
     },
     version: 1,
     options: {
       autoNgTemplateLoader: {
-        pathResolver: urlToRequest
-      }
-    }
+        pathResolver: urlToRequest,
+      },
+    },
   };
 
   loader.call(context, testDirective1);

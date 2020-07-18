@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js'],
   },
   module: {
     rules: [
@@ -16,10 +16,10 @@ module.exports = {
           {
             loader: 'auto-ngtemplate-loader',
             options: {
-              variableName: 'autoNgTemplateLoaderTemplate'
-            }
-          }
-        ]
+              variableName: 'autoNgTemplateLoaderTemplate',
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
@@ -28,22 +28,22 @@ module.exports = {
           {
             loader: 'ngtemplate-loader',
             options: {
-              relativeTo: resolve('./examples')
-            }
+              relativeTo: resolve('./examples'),
+            },
           },
           {
-            loader: 'html-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'html-loader',
+          },
+        ],
+      },
+    ],
   },
   resolveLoader: {
     alias: {
-      'auto-ngtemplate-loader': join(__dirname, './index.js')
-    }
+      'auto-ngtemplate-loader': join(__dirname, './index.js'),
+    },
   },
   stats: {
-    colors: true
-  }
+    colors: true,
+  },
 };

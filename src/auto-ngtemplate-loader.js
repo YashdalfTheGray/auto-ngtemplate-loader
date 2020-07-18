@@ -11,7 +11,7 @@ module.exports = function autoNgTemplateLoader(source, map) {
   const {
     variableName = 'autoNgTemplateLoaderTemplate',
     pathResolver,
-    useResolverFromConfig = false
+    useResolverFromConfig = false,
   } = loaderUtils.getOptions(this) || {};
 
   if (useResolverFromConfig) {
