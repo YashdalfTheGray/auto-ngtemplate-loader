@@ -29,7 +29,7 @@
     "prettier": "prettier --write src/**/*.js examples/**/*.js index.js webpack.*.js"
   },
   "dependencies": {
-    "html-loader": "~1.1.0",
+    "html-loader": "~0.5.5",
     "loader-utils": "~2.0.0",
     "lodash": "~4.17.19",
     "ngtemplate-loader": "~2.0.1",
