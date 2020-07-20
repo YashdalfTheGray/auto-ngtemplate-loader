@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v3.0.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.0.0) (2020-07-20)
+
+### Breaking
+
+- `auto-ngtemplate-loader` no longer supports Node.js v8.x
+
+### Fixed
+
+- Updated outdated npm packages
+- Added new node versions
+
 ## [v2.1.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v2.0.3) (2019-12-07)
 
 ### Added
