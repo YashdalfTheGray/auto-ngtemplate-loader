@@ -8,7 +8,7 @@ import {
   bControllerName,
   BController,
   bDirectiveName,
-  bDirective
+  bDirective,
 } from './twoDirectives';
 
 angular

@@ -13,9 +13,9 @@ export function aDirective() {
     controller: 'AController',
     controllerAs: 'ACtrl',
     scope: {
-      foo: '='
+      foo: '=',
     },
     bindToController: true,
-    templateUrl: 'aDirective.tpl.html'
+    templateUrl: 'aDirective.tpl.html',
   };
 }

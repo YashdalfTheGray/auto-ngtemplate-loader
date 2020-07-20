@@ -4,14 +4,14 @@ import {
   aControllerName,
   AController,
   aDirectiveName,
-  aDirective
+  aDirective,
 } from './aDirective';
 import { otherServiceName, otherService } from './otherService';
 import {
   otherControllerName,
   OtherController,
   otherDirectiveName,
-  OtherDirective
+  OtherDirective,
 } from './otherDirective';
 
 angular
