@@ -1,13 +1,17 @@
 examples/**
 .github/ISSUE_TEMPLATE/**/*
 .github/pull_request_template.md
+.github/CONTRIBUTING.md
 design/**/*
 src/**/*.spec.js
 src/testdata.js
 .babelrc
 .eslintrc.json
+.eslintignore
 .prettierrc
 .nvmrc
 .travis.yml
 webpack.base.config.js
 yarn.lock
+CODE_OF_CONDUCT.md
+SECURITY.md
