@@ -181,5 +181,5 @@ module.exports = {
   differentPath1,
   differentPath1Replaced,
   differentPath2,
-  differentPath2Replaced
+  differentPath2Replaced,
 };

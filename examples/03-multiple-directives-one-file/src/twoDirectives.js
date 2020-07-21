@@ -13,10 +13,10 @@ export function aDirective() {
     controller: 'AController',
     controllerAs: 'ACtrl',
     scope: {
-      foo: '='
+      foo: '=',
     },
     bindToController: true,
-    templateUrl: 'aDirective.tpl.html'
+    templateUrl: 'aDirective.tpl.html',
   };
 }
 
@@ -33,9 +33,9 @@ export function bDirective() {
     controller: 'BController',
     controllerAs: 'BCtrl',
     scope: {
-      bar: '='
+      bar: '=',
     },
     bindToController: true,
-    templateUrl: 'bDirective.tpl.html'
+    templateUrl: 'bDirective.tpl.html',
   };
 }

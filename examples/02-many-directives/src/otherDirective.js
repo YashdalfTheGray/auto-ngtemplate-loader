@@ -14,8 +14,8 @@ export function OtherDirective() {
     controllerAs: 'OtherCtrl',
     templateUrl: 'otherDirective.tpl.html',
     scope: {
-      foo: '='
+      foo: '=',
     },
-    bindToController: true
+    bindToController: true,
   };
 }

@@ -3,21 +3,21 @@
 angular
   .module('myApp', [])
   .service('myService', () => ({
-    getText: () => 'Test text'
+    getText: () => 'Test text',
   }))
   .controller('MyController', [
     'myService',
-    myService => {
+    (myService) => {
       MyCtrl.message = myService.getText();
-    }
+    },
   ])
   .directive('myDirective', () => ({
     restrict: 'E',
     controller: 'MyController',
     controllerAs: 'MyCtrl',
     scope: {
-      foo: '='
+      foo: '=',
     },
     bindToController: true,
-    templateUrl: '../html/app.tpl.html'
+    templateUrl: '../html/app.tpl.html',
   }));

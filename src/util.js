@@ -36,10 +36,10 @@ function replaceTemplateUrl(variableName, lines, resolver) {
         lineVariable,
         templateUrl,
         lineNumber,
-        lineReplacement
+        lineReplacement,
       };
     })
-    .filter(i => i !== null);
+    .filter((i) => i !== null);
 
   if (templateRequires.length === 0) {
     return lines;
@@ -47,20 +47,20 @@ function replaceTemplateUrl(variableName, lines, resolver) {
 
   const updatedLines = lines;
 
-  templateRequires.forEach(x => {
+  templateRequires.forEach((x) => {
     updatedLines[x.lineNumber] = x.lineReplacement;
   });
 
   return [
     ...templateRequires.map(
-      x =>
+      (x) =>
         `const ${x.lineVariable} = require('${resolverFunc(x.templateUrl)}');`
     ),
     ``,
-    ...updatedLines
+    ...updatedLines,
   ];
 }
 
 module.exports = {
-  replaceTemplateUrl
+  replaceTemplateUrl,
 };
