@@ -12,7 +12,7 @@ node_js:
   - "10"
 
 install:
-  - npm install
+  - npm ci
 
 script:
   - npm test
