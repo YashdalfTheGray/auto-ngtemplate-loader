@@ -6,10 +6,10 @@ os:
   - windows
 
 node_js:
-  - 'node'
-  - '14'
-  - '12'
-  - '10'
+  - "node"
+  - "14"
+  - "12"
+  - "10"
 
 install:
   - npm install
@@ -25,4 +25,4 @@ script:
 
 cache:
   directories:
-    - 'node_modules'
+    - "node_modules"
