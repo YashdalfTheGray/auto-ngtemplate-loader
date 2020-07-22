@@ -21,6 +21,7 @@ script:
   - npm run many-directives
   - npm run multiple-directives
   - npm run absolute-paths
+  - npm run separated-templates
 
 cache:
   directories:
