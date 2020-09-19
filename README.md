@@ -16,16 +16,16 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'other-loaders', 'auto-ngtemplate-loader']
-      }
-    ]
-  }
+        use: ['babel-loader', 'other-loaders', 'auto-ngtemplate-loader'],
+      },
+    ],
+  },
 };
 ```
 
 **Note** - It is recommended that this loader be run before any transpilation happens so it can operate on unchanged source code.
 
-The next step is to add `ngtemplate-loader` and a loader that you want to handle your template code with. The most common one is `html-loader`. This will run every time Webpack encounters `require('something.html')`.
+The next step is to add [`ngtemplate-loader`](https://github.com/WearyMonkey/ngtemplate-loader) and a loader that you want to handle your template code with. The most common one is [`html-loader`](https://github.com/webpack-contrib/html-loader). This will run every time Webpack encounters `require('something.html')`.
 
 ```js
 module.exports = {
@@ -38,16 +38,16 @@ module.exports = {
           {
             loader: 'ngtemplate-loader',
             options: {
-              relativeTo: 'src/'
-            }
+              relativeTo: 'src/',
+            },
           },
           {
-            loader: 'html-loader'
-          }
-        ]
-      }
-    ]
-  }
+            loader: 'html-loader',
+          },
+        ],
+      },
+    ],
+  },
 };
 ```
 
@@ -69,7 +69,7 @@ Since Webpack v1 only supports query strings for loaders and doesn't allow passi
 ```javascript
 module.exports = {
   autoNgTemplateLoader: {
-    pathResolver: p => p.replace(/src/, '..').substring(1)
+    pathResolver: (p) => p.replace(/src/, '..').substring(1),
   },
   module: {
     loaders: [
@@ -77,10 +77,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader:
-          'babel-loader!auto-ngtemplate-loader?variableName=testVar&useResolverFromConfig=true'
-      }
-    ]
-  }
+          'babel-loader!auto-ngtemplate-loader?variableName=testVar&useResolverFromConfig=true',
+      },
+    ],
+  },
 };
 ```
 
@@ -92,13 +92,11 @@ Please follow the guidelines in the [contribution guide](.github/CONTRIBUTING.md
 
 ### Installation
 
-Once the repository is cloned, run `npm install` to get all the dependencies. The examples in this package also depend on `ngtemplate-loader` and `html-loader`. Those are declared as peer dependencies of this package so they need to be installed with `npm install ngtemplate-loader html-loader`.
-
-If you're using a npm v5, you will need to include the `--no-save` flag so that they don't get added to the package dependencies.
+Once the repository is cloned, run `npm install` to get all the dependencies. The examples in this package also depend on `ngtemplate-loader` and `html-loader`.
 
 ### Running
 
-There are two example projects includes. One that has one directive and another that has more. You can run `npm run one-directive`, `npm run many-directives` or `npm run multiple-directives` to see the loader in action. Once successful, examining the `build/bundle.js` file will show the results.
+There are a few example projects included. One that has one directive, another that has more, one that uses templates from a different folder, and one that uses absolute paths. You can run `npm run one-directive`, `npm run many-directives`, `npm run multiple-directives`, `npm run separated-templates`, or `npm run absolute-paths` to see the loader in action. Once successful, examining the `build/bundle.js` file under the respective examples folder will show the results.
 
 ### Testing
 
@@ -110,7 +108,7 @@ This project uses ESLint. All the requisite files can be linted using `npm run l
 
 ### Miscellaneous
 
-This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v10.15.2 which is the current LTS release. However, any Node.js version greater than v10.15.2 should also work.
+This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v12.18.2 which is the current LTS release. However, any Node.js version greater than v12.18.2 should also work.
 
 The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's package manager. Normal `yarn` commands apply.
 
