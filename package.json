@@ -52,7 +52,7 @@
     "webpack-cli": "~3.3.12"
   },
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=10"
   },
   "husky": {
     "hooks": {
