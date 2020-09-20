@@ -5,12 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [v3.1.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.1.0) (2020-07-20)
+## [v3.1.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.1.0) (2020-09-21)
 
 ### Fixed
 
 - Updated outdated npm packages
-- Changed the package.json engine to 10.x instead of 8.x (releasing this as a minor version because it might generate warnings for incompatible Node versions in some cases)
+- Changed the package.json engine to 10.x instead of 8.x
+- Updated package versions after the resolution of [#23](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/issues/23)
+
+**NOTE** - releasing this as a minor version because it might generate warnings for incompatible Node versions in some cases
 
 ## [v3.0.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.0.0) (2020-07-20)
 
