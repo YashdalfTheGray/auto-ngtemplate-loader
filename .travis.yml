@@ -11,17 +11,12 @@ node_js:
   - "12"
   - "10"
 
+env:
+  - WEBPACK_VERSION=5 WEBPACK_CLI_VERSION=4
+  - WEBPACK_VERSION=4 WEBPACK_CLI_VERSION=3
+
 install:
   - npm ci
-
-jobs:
-  include:
-    - env:
-      - WEBPACK_VERSION=4
-      - WEBPACK_CLI_VERSION=3
-    - env:
-      - WEBPACK_VERSION=5
-      - WEBPACK_CLI_VERSION=4
 
 script:
   - npm install webpack@$WEBPACK_VERSION webpack-cli@WEBPACK_CLI_VERSION
