@@ -19,7 +19,7 @@ install:
   - npm ci
 
 script:
-  - npm install webpack@$WEBPACK_VERSION webpack-cli@WEBPACK_CLI_VERSION
+  - npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION
   - npm test
   - npm run linter
   - npm run one-directive
