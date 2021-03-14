@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/auto-ngtemplate-loader.svg)](https://badge.fury.io/js/auto-ngtemplate-loader)
-[![Build Status](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.org/YashdalfTheGray/auto-ngtemplate-loader)
+[![Build Status](https://travis-ci.com/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.com/YashdalfTheGray/auto-ngtemplate-loader)
 
 # auto-ngtemplate-loader
 
