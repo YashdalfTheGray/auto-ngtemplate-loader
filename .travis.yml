@@ -6,20 +6,20 @@ os:
   - windows
 
 node_js:
-  - "node"
-  - "14"
-  - "12"
-  - "10"
+  - 'node'
+  - '14'
+  - '12'
+  - '10'
 
 env:
-  - WEBPACK_VERSION=5 WEBPACK_CLI_VERSION=4
-  - WEBPACK_VERSION=4 WEBPACK_CLI_VERSION=3
+  - WEBPACK_VERSION=5 WEBPACK_CLI_VERSION=4 HTML_LOADER_VERSION=2
+  - WEBPACK_VERSION=4 WEBPACK_CLI_VERSION=3 HTML_LOADER_VERSION=1
 
 install:
   - npm ci
 
 script:
-  - npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION
+  - npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@HTML_LOADER_VERSION
   - npm test
   - npm run linter
   - npm run one-directive
@@ -30,4 +30,4 @@ script:
 
 cache:
   directories:
-    - "node_modules"
+    - 'node_modules'
