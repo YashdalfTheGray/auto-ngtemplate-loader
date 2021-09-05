@@ -66,7 +66,7 @@ jobs:
         run: npm install
 
       - name: Install webpack specific dependencies
-        run: npm install webpack@WEBPACK_VERSION webpack-cli@WEBPACK_CLI_VERSION html-loader@HTML_LOADER_VERSION
+        run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION
 
       - name: Run functional tests
         run: |
