@@ -1,5 +1,6 @@
 [![npm version](https://badge.fury.io/js/auto-ngtemplate-loader.svg)](https://badge.fury.io/js/auto-ngtemplate-loader)
-[![Build Status](https://travis-ci.com/YashdalfTheGray/auto-ngtemplate-loader.svg?branch=master)](https://travis-ci.com/YashdalfTheGray/auto-ngtemplate-loader)
+[![Test and lint](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/actions/workflows/test-and-lint.yml)
+[![CodeQL](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/actions/workflows/codeql-analysis.yml)
 
 # auto-ngtemplate-loader
 
@@ -108,9 +109,7 @@ This project uses ESLint. All the requisite files can be linted using `npm run l
 
 ### Miscellaneous
 
-This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v12.18.2 which is the current LTS release. However, any Node.js version greater than v12.18.2 should also work.
-
-The project is also compatible with [`yarn`](https://yarnpkg.com/), Facebook's package manager. Normal `yarn` commands apply.
+This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v16 which is the current release. However, we run tests on node LTS versions 10, 12, and 14 as well.
 
 ## Resources
 
