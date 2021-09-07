@@ -16,7 +16,7 @@ We use Github to host code, to track issues and feature requests, as well as acc
 
 Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests:
 
-1. Fork the repo and create your branch from `master`.
+1. Fork the repo and create your branch from `main`.
 1. If you've added code that should be tested, add tests.
 1. If you've changed APIs, update the documentation.
 1. Ensure the test suite passes.
@@ -49,7 +49,20 @@ People _love_ thorough bug reports. I'm not even kidding.
 
 The code follows the [Airbnb's Javascript guidelines](https://github.com/airbnb/javascript) with some changes that can be found in the `.eslintrc.json`. This project also uses prettier to auto format the code to read consistent.
 
-As a general rule of thumb, always run `npm test` and `npm run linter` before turning in a contribution. TravisCI will also run the other test cases listed in `package.json` but feel free to run them yourself as well.
+As a general rule of thumb, always run `npm test` and `npm run linter` before turning in a contribution. Github Actions will also run the other test cases listed in `package.json` but feel free to run them yourself as well.
+
+## Cutting a new release
+
+The procedure for cutting a new release is as follows
+
+- Create an entry in `CHANGELOG.md` detailing the changes for this release.
+- Update `package.json` and `package-lock.json` to reflect the new version.
+- Push these changes to the `main` branch.
+- Create a new PR from `main` to `stable`.
+- Wait for the approval checks to pass and merge the PR.
+- Fetch, checkout, and pull the `stable` branch.
+- Run `npm pack && tar -xvzf *.tgz && rm -rf package *.tgz` to check the files that will be included in the release.
+- Run `npm publish` to publish the new version to npm.
 
 ## License
 

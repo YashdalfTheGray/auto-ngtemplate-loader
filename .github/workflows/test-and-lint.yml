@@ -1,0 +1,78 @@
+name: Test and lint
+
+on:
+  push:
+    branches: [main, stable]
+  pull_request:
+    branches: [main, stable]
+
+jobs:
+  testandlint:
+    name: Unit tests and linting
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        node: ['10', '12', '14', '16']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run linter
+        run: npm run linter
+
+  functionaltests:
+    name: Functional tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        node: ['10', '12', '14', '16']
+        webpack-version: ['4', '5']
+        include:
+          - webpack-version: 5
+            webpack-cli-version: 4
+            html-loader-version: 2
+          - webpack-version: 4
+            webpack-cli-version: 3
+            html-loader-version: 1
+
+    env:
+      WEBPACK_VERSION: ${{ matrix.webpack-version }}
+      WEBPACK_CLI_VERSION: ${{ matrix.webpack-cli-version }}
+      HTML_LOADER_VERSION: ${{ matrix.html-loader-version }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install webpack specific dependencies
+        run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION
+
+      - name: Run functional tests
+        run: |
+          npm run one-directive
+          npm run many-directives
+          npm run multiple-directives
+          npm run absolute-paths
+          npm run separated-templates

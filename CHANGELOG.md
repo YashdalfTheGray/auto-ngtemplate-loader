@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v3.1.1](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.1.1) (2021-09-05)
+
+### Fixed
+
+- updated outdated npm packages
+- switched from travis-ci to github actions
+- switched the default branch from `master` to `main`
+
 ## [v3.1.0](https://github.com/YashdalfTheGray/auto-ngtemplate-loader/tree/v3.1.0) (2020-09-21)
 
 ### Fixed

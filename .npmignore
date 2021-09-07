@@ -1,7 +1,6 @@
 examples/**
-.github/ISSUE_TEMPLATE/**/*
-.github/pull_request_template.md
-.github/CONTRIBUTING.md
+.github/**
+.husky/**
 design/**/*
 src/**/*.spec.js
 src/testdata.js
