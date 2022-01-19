@@ -1,3 +1,6 @@
+// There seems to be some contention around this issue
+// https://github.com/import-js/eslint-plugin-import/issues/2331
+// eslint-disable-next-line import/no-unresolved
 const test = require('ava');
 const { urlToRequest } = require('loader-utils');
 
