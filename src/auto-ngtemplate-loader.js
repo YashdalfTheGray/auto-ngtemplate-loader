@@ -1,16 +1,23 @@
 const { escapeRegExp, get } = require('lodash');
 const { isValid } = require('var-validator');
+const { urlToRequest } = require('loader-utils');
 
 const { replaceTemplateUrl } = require('./util');
 
+/**
+ * A loader that automatically replaces templateUrl in angularjs files
+ * @param {string} source the incoming source code
+ * @param {string} map the incoming source map
+ * @this {import('webpack').LoaderContext}
+ */
 module.exports = function autoNgTemplateLoader(source, map) {
   let resolverFunc;
   let resolverFromConfig;
   const {
     variableName = 'autoNgTemplateLoaderTemplate',
-    pathResolver,
+    pathResolver = urlToRequest,
     useResolverFromConfig = false,
-  } = this.getOptions || {};
+  } = this.getOptions();
 
   if (useResolverFromConfig) {
     if (this.version > 1) {
