@@ -4,6 +4,6 @@
   "rules": {
     "linebreak-style": ["off"],
     "max-len": ["warn", 120],
-    "object-shorthand": ["error", "consistent-as-needed"]
+    "object-shorthand": ["off"]
   }
 }
