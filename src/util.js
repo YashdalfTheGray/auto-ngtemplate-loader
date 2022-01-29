@@ -1,12 +1,17 @@
-const { urlToRequest } = require('loader-utils');
-
+/**
+ * replaceTemplateUrl finds and replaces all instances of templateUr
+ * with a webpack compatible require automatically.
+ * @param {string} variableName the name of the replacement variable
+ * @param {Array<string>} lines the individual lines of the source code
+ * @param {Function} resolver function to use to resolve the templateUrl
+ * @returns the updated lines of source code
+ */
 function replaceTemplateUrl(variableName, lines, resolver) {
   const regEx = /(^\s*templateUrl\s*:\s*)['"](.*)['"](,*)(\s*)$/;
   const lineNumbers = lines.reduce(
     (result, line, i) => (/templateUrl/.test(line) ? result.concat(i) : result),
     []
   );
-  const resolverFunc = resolver || urlToRequest;
 
   if (!lineNumbers.length) {
     return lines;
@@ -53,8 +58,7 @@ function replaceTemplateUrl(variableName, lines, resolver) {
 
   return [
     ...templateRequires.map(
-      (x) =>
-        `const ${x.lineVariable} = require('${resolverFunc(x.templateUrl)}');`
+      (x) => `const ${x.lineVariable} = require('${resolver(x.templateUrl)}');`
     ),
     ``,
     ...updatedLines,
