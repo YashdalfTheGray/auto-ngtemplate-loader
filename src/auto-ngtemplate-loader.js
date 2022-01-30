@@ -1,6 +1,6 @@
 const { escapeRegExp, get } = require('lodash');
 const { isValid } = require('var-validator');
-const { urlToRequest } = require('loader-utils');
+const { urlToRequest, getOptions } = require('loader-utils');
 
 const { replaceTemplateUrl } = require('./util');
 
@@ -17,7 +17,7 @@ module.exports = function autoNgTemplateLoader(source, map) {
     variableName = 'autoNgTemplateLoaderTemplate',
     pathResolver = urlToRequest,
     useResolverFromConfig = false,
-  } = this.getOptions();
+  } = this.getOptions() || getOptions(this);
 
   if (useResolverFromConfig) {
     if (this.version > 1) {
