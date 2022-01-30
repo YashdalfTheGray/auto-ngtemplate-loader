@@ -45,9 +45,11 @@ jobs:
           - webpack-version: 5
             webpack-cli-version: 4
             html-loader-version: 2
+            loader-utils-version: 3
           - webpack-version: 4
             webpack-cli-version: 3
             html-loader-version: 1
+            loader-utils-version: 2
 
     env:
       WEBPACK_VERSION: ${{ matrix.webpack-version }}
@@ -67,7 +69,11 @@ jobs:
         run: npm install
 
       - name: Install webpack specific dependencies
-        run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION
+        run: npm install \
+          webpack@$WEBPACK_VERSION \
+          webpack-cli@$WEBPACK_CLI_VERSION \
+          html-loader@$HTML_LOADER_VERSION \
+          loader-utils@$LOADER_UTILS_VERSION
 
       - name: Run functional tests
         run: |
