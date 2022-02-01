@@ -4,6 +4,13 @@ const { urlToRequest, getOptions } = require('loader-utils');
 
 const { replaceTemplateUrl } = require('./util');
 
+const getOptionsShim = (context) => {
+  if (context.getOptions && context.getOptions instanceof Function) {
+    return context.getOptions();
+  }
+  return getOptions(context);
+};
+
 /**
  * A loader that automatically replaces templateUrl in angularjs files
  * @param {string} source the incoming source code
@@ -17,7 +24,7 @@ module.exports = function autoNgTemplateLoader(source, map) {
     variableName = 'autoNgTemplateLoaderTemplate',
     pathResolver = urlToRequest,
     useResolverFromConfig = false,
-  } = this.getOptions() || getOptions(this);
+  } = getOptionsShim(this);
 
   if (useResolverFromConfig) {
     if (this.version > 1) {
