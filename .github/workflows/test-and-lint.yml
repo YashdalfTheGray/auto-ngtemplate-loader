@@ -55,6 +55,7 @@ jobs:
       WEBPACK_VERSION: ${{ matrix.webpack-version }}
       WEBPACK_CLI_VERSION: ${{ matrix.webpack-cli-version }}
       HTML_LOADER_VERSION: ${{ matrix.html-loader-version }}
+      LOADER_UTILS_VERSION: ${{ matrix.loader-utils-version }}
 
     steps:
       - name: Checkout code
