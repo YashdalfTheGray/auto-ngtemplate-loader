@@ -11,6 +11,7 @@ jobs:
     name: Unit tests and linting
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         node: ['12', '14', '16', '17']
@@ -37,6 +38,7 @@ jobs:
     name: Functional tests
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         node: ['12', '14', '16', '17']
@@ -72,13 +74,6 @@ jobs:
       - name: Install webpack specific dependencies
         run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION loader-utils@$LOADER_UTILS_VERSION
 
-      - name: Conditionally set SSL legacy provider on Nodejs v17 and Webpack v4
-        run: |
-          echo "Setting SSL legacy provider for Nodejs v17 and Webpack v4"
-          export NODE_OPTIONS=--openssl-legacy-provider
-        if: matrix.node == '17' && matrix.webpack-version == '4'
-        # https://github.com/webpack/webpack/issues/14532 🙄
-
       - name: Run functional tests
         run: |
           npm run one-directive
@@ -86,3 +81,15 @@ jobs:
           npm run multiple-directives
           npm run absolute-paths
           npm run separated-templates
+        if: matrix.node != '17' && matrix.webpack-version != '4'
+
+      - name: Run functional tests (Node.js v17 and Webpack v4)
+        run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
+          npm run one-directive
+          npm run many-directives
+          npm run multiple-directives
+          npm run absolute-paths
+          npm run separated-templates
+        if: matrix.node == '17' && matrix.webpack-version == '4'
+        # https://github.com/webpack/webpack/issues/14532 🙄
