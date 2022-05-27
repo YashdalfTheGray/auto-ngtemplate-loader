@@ -38,7 +38,7 @@
     "var-validator": "0.0.3"
   },
   "devDependencies": {
-    "@babel/core": "~7.17.5",
+    "@babel/core": "~7.18.2",
     "@babel/preset-env": "~7.16.4",
     "ava": "~4.2.0",
     "babel-loader": "~8.2.2",
