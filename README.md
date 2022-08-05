@@ -107,6 +107,22 @@ The tests for this package are written in with ava. They can be run by running `
 
 This project uses ESLint. All the requisite files can be linted using `npm run linter`. The rules for this project are located in `eslintrc.json`. This will also report prettier errors.
 
+### Release procedure
+
+1. Get ready for relaese by updating the `main` branch by running `git pull --rebase`. Resolve all the conflicts as necessary.
+1. Check package versions if they need updated by running `npm outdated` and `npm update`. This will update the package versions that can be updated automatically.
+1. If a manual version update is required, make sure to go into `package.json` and change all the `^` into `~` and regenerate the `package-lock.json` by running `rm -rf node_modules package-lock.json && npm install`
+1. Determine the next version number by following semantic versioning rules.
+1. Add an entry to the `CHANGELOG.md` file and detail the changes that are shipping with this release.
+1. Update the package version in `package.json` and `package-lock.json`.
+1. Run all the test commands including the example commands.
+1. Commit all your changes to `main`.
+1. Create a new pull request from `main` to `stable`.
+1. Let the automated verification steps run.
+1. Merge the code to `stable`.
+1. Checkout `stable` locally and run `npm run publish-dryrun` to validate the files that are being shipped. Make sure that it is the most minimal set.
+1. Once validated, run `npm publish` to publish the package.
+
 ### Miscellaneous
 
 This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v16 which is the current release. However, we run tests on node LTS versions 10, 12, and 14 as well.
