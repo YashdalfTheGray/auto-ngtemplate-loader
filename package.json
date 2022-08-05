@@ -28,7 +28,8 @@
     "absolute-paths": "webpack --config examples/05-absolute-paths/webpack.config.js",
     "prettier": "prettier --write src/**/*.js examples/**/*.js index.js webpack.*.js",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "publish-dryrun": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },
   "dependencies": {
     "html-loader": "~4.1.0",
