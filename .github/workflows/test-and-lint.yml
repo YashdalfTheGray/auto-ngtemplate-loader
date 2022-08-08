@@ -11,9 +11,10 @@ jobs:
     name: Unit tests and linting
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        node: ['10', '12', '14', '16']
+        node: ['12', '14', '16', '17']
 
     steps:
       - name: Checkout code
@@ -37,22 +38,26 @@ jobs:
     name: Functional tests
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        node: ['10', '12', '14', '16']
+        node: ['12', '14', '16', '17']
         webpack-version: ['4', '5']
         include:
           - webpack-version: 5
             webpack-cli-version: 4
             html-loader-version: 2
+            loader-utils-version: 3
           - webpack-version: 4
             webpack-cli-version: 3
             html-loader-version: 1
+            loader-utils-version: 2
 
     env:
       WEBPACK_VERSION: ${{ matrix.webpack-version }}
       WEBPACK_CLI_VERSION: ${{ matrix.webpack-cli-version }}
       HTML_LOADER_VERSION: ${{ matrix.html-loader-version }}
+      LOADER_UTILS_VERSION: ${{ matrix.loader-utils-version }}
 
     steps:
       - name: Checkout code
@@ -67,7 +72,7 @@ jobs:
         run: npm install
 
       - name: Install webpack specific dependencies
-        run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION
+        run: npm install webpack@$WEBPACK_VERSION webpack-cli@$WEBPACK_CLI_VERSION html-loader@$HTML_LOADER_VERSION loader-utils@$LOADER_UTILS_VERSION
 
       - name: Run functional tests
         run: |
@@ -76,3 +81,26 @@ jobs:
           npm run multiple-directives
           npm run absolute-paths
           npm run separated-templates
+        if: matrix.node != '17' && matrix.webpack-version != '4' && matrix.os != 'windows-latest'
+
+      - name: Run functional tests (Node.js v17 and Webpack v4)
+        run: |
+          export NODE_OPTIONS=--openssl-legacy-provider
+          npm run one-directive
+          npm run many-directives
+          npm run multiple-directives
+          npm run absolute-paths
+          npm run separated-templates
+        if: matrix.node == '17' && matrix.webpack-version == '4' && matrix.os != 'windows-latest'
+        # https://github.com/webpack/webpack/issues/14532 🙄
+
+      - name: Run functional tests (Node.js v17, Webpack v4 and Windows)
+        run: |
+          $Env:NODE_OPTIONS = "--openssl-legacy-provider"
+          npm run one-directive
+          npm run many-directives
+          npm run multiple-directives
+          npm run absolute-paths
+          npm run separated-templates
+        if: matrix.node == '17' && matrix.webpack-version == '4' && matrix.os == 'windows-latest'
+        # https://github.com/webpack/webpack/issues/14532 🙄

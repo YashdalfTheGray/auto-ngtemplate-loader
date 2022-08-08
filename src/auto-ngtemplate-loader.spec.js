@@ -1,3 +1,6 @@
+// There seems to be some contention around this issue
+// https://github.com/import-js/eslint-plugin-import/issues/2331
+// eslint-disable-next-line import/no-unresolved
 const test = require('ava');
 const { urlToRequest } = require('loader-utils');
 
@@ -12,36 +15,25 @@ test('loader works on files that need templates replaced', (t) => {
       t.is(err, null);
       t.deepEqual(source, testDirective1Replaced());
     },
-  };
-
-  loader.call(context, testDirective1);
-});
-
-test('loader works with a query object', (t) => {
-  t.plan(2);
-
-  const context = {
-    callback: function callback(err, source) {
-      t.is(err, null);
-      t.deepEqual(source, testDirective1Replaced('testVariable'));
-    },
-    query: {
-      variableName: 'testVariable',
+    getOptions() {
+      return {};
     },
   };
 
   loader.call(context, testDirective1);
 });
 
-test('loader works with an query string', (t) => {
+test('loader works with custom options', (t) => {
   t.plan(2);
 
   const context = {
-    callback: function callback(err, source) {
+    callback(err, source) {
       t.is(err, null);
       t.deepEqual(source, testDirective1Replaced('testVariable'));
     },
-    query: '?variableName=testVariable',
+    getOptions() {
+      return { variableName: 'testVariable' };
+    },
   };
 
   loader.call(context, testDirective1);
@@ -51,12 +43,12 @@ test('loader throws an error when variable is not valid', (t) => {
   t.plan(2);
 
   const context = {
-    callback: function callback(err, source) {
+    callback(err, source) {
       t.deepEqual(err, new Error('Specified variable name is not valid'));
       t.is(source, null);
     },
-    query: {
-      variableName: 'test variable',
+    getOptions() {
+      return { variableName: 'test variable' };
     },
   };
 
@@ -67,16 +59,15 @@ test('loader throws an error if webpack v2 and useResolverFromConfig is true', (
   t.plan(2);
 
   const context = {
-    callback: function callback(err, source) {
+    callback(err, source) {
       t.deepEqual(
         err,
         new Error('Resolver required to be passed as an option with Webpack v2')
       );
       t.is(source, null);
     },
-    query: {
-      variableName: 'testVariable',
-      useResolverFromConfig: true,
+    getOptions() {
+      return { variableName: 'testVariable', useResolverFromConfig: true };
     },
     version: 2,
   };
@@ -88,7 +79,7 @@ test('loader throws an error if useResolverFromConfig is true and no resolver fo
   t.plan(2);
 
   const context = {
-    callback: function callback(err, source) {
+    callback(err, source) {
       t.deepEqual(
         err,
         new Error(
@@ -97,9 +88,8 @@ test('loader throws an error if useResolverFromConfig is true and no resolver fo
       );
       t.is(source, null);
     },
-    query: {
-      variableName: 'testVariable',
-      useResolverFromConfig: true,
+    getOptions() {
+      return { variableName: 'testVariable', useResolverFromConfig: true };
     },
     version: 1,
   };
@@ -111,13 +101,12 @@ test('accepts a function from the config if webpack v1', (t) => {
   t.plan(2);
 
   const context = {
-    callback: function callback(err, source) {
+    callback(err, source) {
       t.is(err, null);
       t.is(source, testDirective1Replaced('testVariable'));
     },
-    query: {
-      variableName: 'testVariable',
-      useResolverFromConfig: true,
+    getOptions() {
+      return { variableName: 'testVariable', useResolverFromConfig: true };
     },
     version: 1,
     options: {

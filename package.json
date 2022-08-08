@@ -1,6 +1,6 @@
 {
   "name": "auto-ngtemplate-loader",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Auto require AngularJS 1.x templates in Webpack style",
   "main": "index.js",
   "repository": "https://github.com/yashdalfthegray/auto-ngtemplate-loader",
@@ -28,33 +28,34 @@
     "absolute-paths": "webpack --config examples/05-absolute-paths/webpack.config.js",
     "prettier": "prettier --write src/**/*.js examples/**/*.js index.js webpack.*.js",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "publish-dryrun": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },
   "dependencies": {
-    "html-loader": "~2.1.2",
-    "loader-utils": "~2.0.0",
+    "html-loader": "~4.1.0",
+    "loader-utils": "~3.2.0",
     "lodash": "~4.17.20",
     "ngtemplate-loader": "~2.1.0",
     "var-validator": "0.0.3"
   },
   "devDependencies": {
-    "@babel/core": "~7.15.0",
-    "@babel/preset-env": "~7.15.0",
-    "ava": "~3.15.0",
+    "@babel/core": "~7.18.10",
+    "@babel/preset-env": "~7.18.10",
+    "ava": "~4.3.0",
     "babel-loader": "~8.2.2",
-    "eslint": "~7.32.0",
-    "eslint-config-airbnb-base": "~14.2.0",
-    "eslint-config-prettier": "~8.3.0",
-    "eslint-plugin-import": "~2.24.2",
-    "eslint-plugin-prettier": "~4.0.0",
-    "husky": "~7.0.1",
-    "lint-staged": "~11.1.2",
-    "prettier": "~2.3.0",
-    "webpack": "~5.52.0",
-    "webpack-cli": "~4.8.0"
+    "eslint": "~8.21.0",
+    "eslint-config-airbnb-base": "~15.0.0",
+    "eslint-config-prettier": "~8.5.0",
+    "eslint-plugin-import": "~2.26.0",
+    "eslint-plugin-prettier": "~4.2.1",
+    "husky": "~8.0.1",
+    "lint-staged": "~13.0.3",
+    "prettier": "~2.7.1",
+    "webpack": "~5.74.0",
+    "webpack-cli": "~4.10.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [

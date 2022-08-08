@@ -1,18 +1,30 @@
-const loaderUtils = require('loader-utils');
-const { escapeRegExp } = require('lodash');
+const { escapeRegExp, get } = require('lodash');
 const { isValid } = require('var-validator');
-const _ = require('lodash');
+const { urlToRequest, getOptions } = require('loader-utils');
 
 const { replaceTemplateUrl } = require('./util');
 
+const getOptionsShim = (context) => {
+  if (context.getOptions && context.getOptions instanceof Function) {
+    return context.getOptions();
+  }
+  return getOptions(context);
+};
+
+/**
+ * A loader that automatically replaces templateUrl in angularjs files
+ * @param {string} source the incoming source code
+ * @param {string} map the incoming source map
+ * @this {import('webpack').LoaderContext}
+ */
 module.exports = function autoNgTemplateLoader(source, map) {
   let resolverFunc;
   let resolverFromConfig;
   const {
     variableName = 'autoNgTemplateLoaderTemplate',
-    pathResolver,
+    pathResolver = urlToRequest,
     useResolverFromConfig = false,
-  } = loaderUtils.getOptions(this) || {};
+  } = getOptionsShim(this);
 
   if (useResolverFromConfig) {
     if (this.version > 1) {
@@ -26,10 +38,7 @@ module.exports = function autoNgTemplateLoader(source, map) {
       return;
     }
 
-    resolverFromConfig = _.get(
-      this,
-      'options.autoNgTemplateLoader.pathResolver'
-    );
+    resolverFromConfig = get(this, 'options.autoNgTemplateLoader.pathResolver');
 
     if (!resolverFromConfig) {
       this.callback(
