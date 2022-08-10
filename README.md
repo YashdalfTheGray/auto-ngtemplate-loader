@@ -120,6 +120,8 @@ This project uses ESLint. All the requisite files can be linted using `npm run l
 1. Create a new pull request from `main` to `stable`.
 1. Let the automated verification steps run.
 1. Merge the code to `stable`.
+1. Create a GitHub tag from stable for the new version
+1. Use the newly created tag to create a release
 1. Checkout `stable` locally and run `npm run publish-dryrun` to validate the files that are being shipped. Make sure that it is the most minimal set.
 1. Once validated, run `npm publish` to publish the package.
 
