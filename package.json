@@ -32,7 +32,7 @@
     "publish-dryrun": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz"
   },
   "dependencies": {
-    "html-loader": "~4.1.0",
+    "html-loader": "~4.2.0",
     "loader-utils": "~3.2.0",
     "lodash": "~4.17.20",
     "ngtemplate-loader": "~2.1.0",
