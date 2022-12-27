@@ -127,7 +127,7 @@ This project uses ESLint. All the requisite files can be linted using `npm run l
 
 ### Miscellaneous
 
-This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v16 which is the current release. However, we run tests on node LTS versions 10, 12, and 14 as well.
+This project also includes an `.nvmrc`. This is to tell [`nvm`](https://github.com/creationix/nvm) what version of Node.js to use for this project. It is set to v19 which is the current release. However, we run tests on node LTS versions 14, 16, and 18 as well.
 
 ## Resources
 

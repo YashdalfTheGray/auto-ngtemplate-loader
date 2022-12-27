@@ -55,7 +55,7 @@
     "webpack-cli": "~5.0.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
