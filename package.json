@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/core": "~7.20.7",
     "@babel/preset-env": "~7.20.2",
-    "ava": "~5.0.1",
+    "ava": "~5.2.0",
     "babel-loader": "~8.2.2",
     "eslint": "~8.30.0",
     "eslint-config-airbnb-base": "~15.0.0",
